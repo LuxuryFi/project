@@ -1,9 +1,9 @@
-import { createAsyncThunk, createSlice } from '@reduxjs/toolkit';
-import { message } from 'antd';
-import medicalRecordAPI from '../../ api/medicalRecord';
+import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
+import { message } from "antd";
+import medicalRecordAPI from "../../api/medicalRecord";
 
 export const fetchMedicalRecords = createAsyncThunk(
-  'appointmentsSlice/fetchMedicalRecords',
+  "appointmentsSlice/fetchMedicalRecords",
   async (patient_id) => {
     try {
       const result = await medicalRecordAPI.getAll(patient_id);
@@ -15,7 +15,7 @@ export const fetchMedicalRecords = createAsyncThunk(
 );
 
 export const fetchMedicalRecord = createAsyncThunk(
-  'medicalRecordsSlice/fetchMedicalRecord',
+  "medicalRecordsSlice/fetchMedicalRecord",
   async (record_id) => {
     try {
       const result = await medicalRecordAPI.getOne(record_id);
@@ -28,7 +28,7 @@ export const fetchMedicalRecord = createAsyncThunk(
 
 // Reducer
 const medicalRecordsSlice = createSlice({
-  name: 'medicalRecordsSlice',
+  name: "medicalRecordsSlice",
   initialState: {
     medicalRecords: [],
     medicalRecordNeedUpdate: {},

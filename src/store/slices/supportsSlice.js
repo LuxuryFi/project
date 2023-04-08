@@ -1,9 +1,9 @@
-import { createAsyncThunk, createSlice } from '@reduxjs/toolkit';
-import { message } from 'antd';
-import supportAPI from '../../ api/support';
+import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
+import { message } from "antd";
+import supportAPI from "../../api/support";
 
 export const sendSupport = createAsyncThunk(
-  'supportsSlice/sendSupport',
+  "supportsSlice/sendSupport",
   async (support) => {
     try {
       const resutl = await supportAPI.send(support);
@@ -15,7 +15,7 @@ export const sendSupport = createAsyncThunk(
 );
 
 const supportsSlice = createSlice({
-  name: 'supportsSlice',
+  name: "supportsSlice",
   initialState: {
     supports: [],
     isLoading: false,
@@ -29,7 +29,7 @@ const supportsSlice = createSlice({
       state.hasError = false;
     },
     [sendSupport.fulfilled]: (state, action) => {
-      message.success('Sent support successfully!');
+      message.success("Sent support successfully!");
       state.isLoading = false;
       state.hasError = false;
     },

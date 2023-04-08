@@ -1,9 +1,9 @@
-import { createSlice, createAsyncThunk } from '@reduxjs/toolkit';
-import { message } from 'antd';
-import articleAPI from '../../ api/article';
+import { createSlice, createAsyncThunk } from "@reduxjs/toolkit";
+import { message } from "antd";
+import articleAPI from "../../api/article";
 
 export const fetchTags = createAsyncThunk(
-  'articlesSlice/fetchTags',
+  "articlesSlice/fetchTags",
   async () => {
     try {
       const result = await articleAPI.getTags();
@@ -15,7 +15,7 @@ export const fetchTags = createAsyncThunk(
 );
 
 export const fetchTypes = createAsyncThunk(
-  'articlesSlice/fetchTypes',
+  "articlesSlice/fetchTypes",
   async () => {
     try {
       const result = await articleAPI.getTypes();
@@ -27,7 +27,7 @@ export const fetchTypes = createAsyncThunk(
 );
 
 export const fetchArticles = createAsyncThunk(
-  'articlesSlice/fetchArticles',
+  "articlesSlice/fetchArticles",
   async (page) => {
     try {
       const result = await articleAPI.getAll(page);
@@ -39,7 +39,7 @@ export const fetchArticles = createAsyncThunk(
 );
 
 export const fetchArticle = createAsyncThunk(
-  'articlesSlice/fetchArticle',
+  "articlesSlice/fetchArticle",
   async (slug) => {
     try {
       const result = await articleAPI.getOne(slug);
@@ -51,7 +51,7 @@ export const fetchArticle = createAsyncThunk(
 );
 
 export const fetchArticlesLatest = createAsyncThunk(
-  'articlesSlice/fetchArticlesLatest',
+  "articlesSlice/fetchArticlesLatest",
   async (slug) => {
     try {
       const result = await articleAPI.getLastest(slug);
@@ -63,7 +63,7 @@ export const fetchArticlesLatest = createAsyncThunk(
 );
 
 export const fetchArticlesByTag = createAsyncThunk(
-  'articlesSlice/fetchArticlesByTag',
+  "articlesSlice/fetchArticlesByTag",
   async (info) => {
     try {
       const { tag_id, pages } = info;
@@ -76,7 +76,7 @@ export const fetchArticlesByTag = createAsyncThunk(
 );
 
 export const fetchArticlesByType = createAsyncThunk(
-  'articlesSlice/fetchArticlesByType',
+  "articlesSlice/fetchArticlesByType",
   async (info) => {
     try {
       const { type_id, pages } = info;
@@ -89,7 +89,7 @@ export const fetchArticlesByType = createAsyncThunk(
 );
 
 const articlesSlice = createSlice({
-  name: 'articlesSlice',
+  name: "articlesSlice",
   initialState: {
     articles: [],
     articleDetail: {},

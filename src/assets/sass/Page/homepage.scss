@@ -194,7 +194,7 @@
         margin: 0 auto;
       }
       &::before {
-        content: '';
+        content: "";
         position: absolute;
         top: 0;
         left: 0;
@@ -348,7 +348,7 @@
             }
           }
           &::before {
-            content: '';
+            content: "";
             display: block;
             position: absolute;
             top: 0;
@@ -443,7 +443,7 @@
           }
         }
         &::before {
-          content: '';
+          content: "";
           background: -webkit-gradient(
             linear,
             left top,

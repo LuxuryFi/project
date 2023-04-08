@@ -1,14 +1,14 @@
-import React, { useEffect } from 'react';
-import { Row, Col, Form, Input } from 'antd';
-import { Link, useNavigate } from 'react-router-dom';
-import { useSelector, useDispatch } from 'react-redux';
-import { FaFacebookF, FaTwitter, FaGoogle } from 'react-icons/fa';
+import React, { useEffect } from "react";
+import { Row, Col, Form, Input } from "antd";
+import { Link, useNavigate } from "react-router-dom";
+import { useSelector, useDispatch } from "react-redux";
+import { FaFacebookF, FaTwitter, FaGoogle } from "react-icons/fa";
 
-import medcaresLogo from '../../assets/img/medcares-logo.png';
-import bannerLoginBg from '../../assets/img/banner-login-bg.png';
-import Button from '../../components/Button';
-import Spinner from '../../components/Spinner';
-import { selectUserIsLoading, signIn } from '../../store/slices/usersSlice';
+import medcaresLogo from "../../assets/img/medcares-logo.png";
+import bannerLoginBg from "../../assets/img/banner-login-bg.png";
+import Button from "../../components/Button";
+import Spinner from "../../components/Spinner";
+import { selectUserIsLoading, signIn } from "../../store/slices/usersSlice";
 
 export default function SigninForm() {
   const [form] = Form.useForm();
@@ -17,8 +17,8 @@ export default function SigninForm() {
   const isLoading = useSelector(selectUserIsLoading);
 
   useEffect(() => {
-    if (JSON.parse(localStorage.getItem('currentPatient'))) {
-      navigate('/');
+    if (JSON.parse(localStorage.getItem("currentPatient"))) {
+      navigate("/");
     }
   }, [navigate]);
 
@@ -32,23 +32,10 @@ export default function SigninForm() {
       <Col className="left" sm={24} md={24} lg={12} xl={12} xxl={12}>
         <div className="container-fluid">
           <Link to="/" className="logo-container">
-            <img
-              src={medcaresLogo}
-              alt="logo navigation"
-              className="logo-img"
-            />
-            <span className="logo-text">MedCares</span>
+            <span className="logo-text">BookStore</span>
           </Link>
           <div className="banner-container">
-            <div className="banner-bg">
-              <div className="left"></div>
-              <div className="right"></div>
-              <img
-                src={bannerLoginBg}
-                className="banner-img"
-                alt="banner login bg"
-              />
-            </div>
+            <div className="banner-bg"></div>
           </div>
         </div>
       </Col>
@@ -57,7 +44,7 @@ export default function SigninForm() {
           <div className="form-container">
             <h2 className="title">Sign in</h2>
             <p className="sub-title">
-              Let's protect yourself and those around you by vaccinating
+              A story that will really make you tremble with anticipation!
             </p>
             <Form
               form={form}
@@ -72,7 +59,7 @@ export default function SigninForm() {
                 rules={[
                   {
                     required: true,
-                    message: 'Please enter your email!',
+                    message: "Please enter your email!",
                   },
                 ]}
                 name="email"
@@ -87,7 +74,7 @@ export default function SigninForm() {
                 rules={[
                   {
                     required: true,
-                    message: 'Please input your password!',
+                    message: "Please input your password!",
                   },
                 ]}
                 className="form-input-group"
@@ -100,7 +87,7 @@ export default function SigninForm() {
 
               {/* Forgot Password */}
               <Form.Item
-                style={{ textAlign: 'right' }}
+                style={{ textAlign: "right" }}
                 valuePropName="checked"
                 name="forgot_password"
                 className="form-input-group"
@@ -117,7 +104,7 @@ export default function SigninForm() {
               {/* Button */}
               <Form.Item className="form-input-group">
                 <Button type="submit" className="button button--blue--dark">
-                  <span>{isLoading ? <Spinner /> : 'Sign In'}</span>
+                  <span>{isLoading ? <Spinner /> : "Sign In"}</span>
                 </Button>
               </Form.Item>
             </Form>
@@ -140,7 +127,7 @@ export default function SigninForm() {
 
             {/* Sign Up */}
             <p className="signup-text">
-              Don't have an account?{' '}
+              Don't have an account?{" "}
               <Link to="/signup" className="signup-link">
                 Sign up
               </Link>

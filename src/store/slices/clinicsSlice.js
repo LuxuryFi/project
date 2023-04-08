@@ -1,9 +1,9 @@
-import { createAsyncThunk, createSlice } from '@reduxjs/toolkit';
-import { message } from 'antd';
-import clinicAPI from '../../ api/clinic';
+import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
+import { message } from "antd";
+import clinicAPI from "../../api/clinic";
 
 export const fetchClinics = createAsyncThunk(
-  'clinicsSlice/fetchClinics',
+  "clinicsSlice/fetchClinics",
   async () => {
     try {
       const result = await clinicAPI.getAll();
@@ -15,7 +15,7 @@ export const fetchClinics = createAsyncThunk(
 );
 
 export const fetchClinic = createAsyncThunk(
-  'clinicsSlice/fetchClinic',
+  "clinicsSlice/fetchClinic",
   async (clinic_id) => {
     try {
       const result = await clinicAPI.getOne(clinic_id);
@@ -27,7 +27,7 @@ export const fetchClinic = createAsyncThunk(
 );
 
 export const fetchDoctorsClinic = createAsyncThunk(
-  'clinicsSlice/fetchDoctorsClinic',
+  "clinicsSlice/fetchDoctorsClinic",
   async (clinic_id) => {
     try {
       const result = await clinicAPI.getDoctors(clinic_id);
@@ -39,7 +39,7 @@ export const fetchDoctorsClinic = createAsyncThunk(
 );
 
 export const fetchCategoriesByClinic = createAsyncThunk(
-  'clinicsSlice/fetchCategoriesByClinic',
+  "clinicsSlice/fetchCategoriesByClinic",
   async (clinic_id) => {
     try {
       const result = await clinicAPI.getCategories(clinic_id);
@@ -52,7 +52,7 @@ export const fetchCategoriesByClinic = createAsyncThunk(
 
 // Reducer
 const clinicsSlice = createSlice({
-  name: 'clinicsSlice',
+  name: "clinicsSlice",
   initialState: {
     clinics: [],
     clinicNeedUpdate: {},

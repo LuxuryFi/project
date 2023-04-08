@@ -1,9 +1,9 @@
-import { createAsyncThunk, createSlice } from '@reduxjs/toolkit';
-import { message } from 'antd';
-import appointmentAPI from '../../ api/appointment';
+import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
+import { message } from "antd";
+import appointmentAPI from "../../api/appointment";
 
 export const bookAppointment = createAsyncThunk(
-  'appointmentsSlice/bookAppointment',
+  "appointmentsSlice/bookAppointment",
   async (data) => {
     try {
       const { newAppointment, nextStep } = data;
@@ -19,7 +19,7 @@ export const bookAppointment = createAsyncThunk(
 );
 
 export const fetchAppointments = createAsyncThunk(
-  'appointmentsSlice/fetchAppointments',
+  "appointmentsSlice/fetchAppointments",
   async () => {
     try {
       const result = await appointmentAPI.getAll();
@@ -32,7 +32,7 @@ export const fetchAppointments = createAsyncThunk(
 
 // Reducer
 const appointmentsSlice = createSlice({
-  name: 'appointmentsSlice',
+  name: "appointmentsSlice",
   initialState: {
     appointments: [],
     isLoading: false,
@@ -46,7 +46,7 @@ const appointmentsSlice = createSlice({
       state.hasError = false;
     },
     [bookAppointment.fulfilled]: (state, action) => {
-      message.success('Sent appointment successfully!');
+      message.success("Sent appointment successfully!");
       action.payload.nextStep();
       state.isLoading = false;
       state.hasError = false;

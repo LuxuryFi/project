@@ -4,20 +4,23 @@
   .left {
     height: 100%;
     position: relative;
-    background-image: url(../../img/login-bg.jpeg);
-    background-size: cover;
-    background-position: center center;
-    background-repeat: no-repeat;
+    // background-image: url(../../img/login-bg.jpeg);
     .logo-container {
       padding: $pd-4 0 0 $pd-6;
       @extend %logo-container;
     }
     .banner-container {
       background-image: none;
+      height: fit-content;
       display: flex;
       align-items: center;
       justify-content: center;
       .banner-bg {
+        margin-top: 40px;
+        background-image: url("http://subsolardesigns.com/odrin/demo2/wp-content/uploads/sites/8/2017/05/dancer.png");
+        background-size: contain;
+        background-position: center center;
+        background-repeat: no-repeat;
         position: relative;
         width: 500px;
         height: 506px;
@@ -59,7 +62,8 @@
   }
   .right {
     // padding-top: $pd-6;
-    background-color: $color-bg;
+    // background-color: $color-bg;
+    background-color: transparent;
     display: flex;
     align-items: center;
     justify-content: flex-start;
@@ -84,7 +88,7 @@
           cursor: pointer;
           position: relative;
           &::after {
-            content: '';
+            content: "";
             position: absolute;
             top: 100%;
             left: 0;
@@ -156,7 +160,7 @@
           transition: 0.5s ease;
           @include styleText($color-blue-1, $fs-0 + 2, $fw-0);
           &::after {
-            content: '';
+            content: "";
             position: absolute;
             top: 100%;
             left: 0;

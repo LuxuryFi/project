@@ -1,14 +1,14 @@
-import React from 'react';
-import { Row, Col, Form, Input, DatePicker, Radio } from 'antd';
-import { Link } from 'react-router-dom';
-import { useSelector, useDispatch } from 'react-redux';
-import moment from 'moment';
+import React from "react";
+import { Row, Col, Form, Input, DatePicker, Radio } from "antd";
+import { Link } from "react-router-dom";
+import { useSelector, useDispatch } from "react-redux";
+import moment from "moment";
 
-import medcaresLogo from '../../assets/img/medcares-logo.png';
-import bannerLoginBg from '../../assets/img/banner-login-bg.png';
-import Button from '../../components/Button';
-import Spinner from '../../components/Spinner';
-import { selectUserIsLoading, signUp } from '../../store/slices/usersSlice';
+import medcaresLogo from "../../assets/img/medcares-logo.png";
+import bannerLoginBg from "../../assets/img/banner-login-bg.png";
+import Button from "../../components/Button";
+import Spinner from "../../components/Spinner";
+import { selectUserIsLoading, signUp } from "../../store/slices/usersSlice";
 
 const formItemLayout = {
   labelCol: {
@@ -53,7 +53,7 @@ export default function SignUpForm() {
       email: values.email,
       phone: values.phone,
       password: values.password,
-      date_of_birth: moment(values.date_of_birth).format('YYYY-MM-DD'),
+      date_of_birth: moment(values.date_of_birth).format("YYYY-MM-DD"),
       gender: values.gender,
     };
 
@@ -65,23 +65,10 @@ export default function SignUpForm() {
       <Col className="left" sm={24} md={24} lg={12} xl={12} xxl={12}>
         <div className="container-fluid">
           <Link to="/" className="logo-container">
-            <img
-              src={medcaresLogo}
-              alt="logo navigation"
-              className="logo-img"
-            />
-            <span className="logo-text">MedCares</span>
+            <span className="logo-text">BookStore</span>
           </Link>
           <div className="banner-container">
-            <div className="banner-bg">
-              <div className="left"></div>
-              <div className="right"></div>
-              <img
-                src={bannerLoginBg}
-                className="banner-img"
-                alt="banner login bg"
-              />
-            </div>
+            <div className="banner-bg"></div>
           </div>
         </div>
       </Col>
@@ -115,7 +102,7 @@ export default function SignUpForm() {
                     rules={[
                       {
                         required: true,
-                        message: 'Please enter your first name!',
+                        message: "Please enter your first name!",
                       },
                     ]}
                     label="First Name"
@@ -130,11 +117,11 @@ export default function SignUpForm() {
                     rules={[
                       {
                         required: true,
-                        message: 'Please enter your email!',
+                        message: "Please enter your email!",
                       },
                       {
-                        type: 'email',
-                        message: 'The input is not valid E-mail!',
+                        type: "email",
+                        message: "The input is not valid E-mail!",
                       },
                     ]}
                     label="Email"
@@ -151,7 +138,7 @@ export default function SignUpForm() {
                     rules={[
                       {
                         required: true,
-                        message: 'Please input your password!',
+                        message: "Please input your password!",
                       },
                     ]}
                     className="form-input-group"
@@ -165,23 +152,23 @@ export default function SignUpForm() {
                   {/* Confirm Password */}
                   <Form.Item
                     name="confirm"
-                    dependencies={['password']}
+                    dependencies={["password"]}
                     label="Confirm Password"
                     hasFeedback
                     rules={[
                       {
                         required: true,
-                        message: 'Please confirm your password!',
+                        message: "Please confirm your password!",
                       },
                       ({ getFieldValue }) => ({
                         validator(_, value) {
-                          if (!value || getFieldValue('password') === value) {
+                          if (!value || getFieldValue("password") === value) {
                             return Promise.resolve();
                           }
 
                           return Promise.reject(
                             new Error(
-                              'The two passwords that you entered do not match!'
+                              "The two passwords that you entered do not match!"
                             )
                           );
                         },
@@ -209,7 +196,7 @@ export default function SignUpForm() {
                     rules={[
                       {
                         required: true,
-                        message: 'Please enter your last name!',
+                        message: "Please enter your last name!",
                       },
                     ]}
                     label="Last Name"
@@ -226,7 +213,7 @@ export default function SignUpForm() {
                     rules={[
                       {
                         required: true,
-                        message: 'Please enter your date of brith',
+                        message: "Please enter your date of brith",
                       },
                     ]}
                   >
@@ -245,7 +232,7 @@ export default function SignUpForm() {
                     rules={[
                       {
                         required: true,
-                        message: 'Please select your gender!',
+                        message: "Please select your gender!",
                       },
                     ]}
                   >
@@ -262,7 +249,7 @@ export default function SignUpForm() {
                     rules={[
                       {
                         required: true,
-                        message: 'Please enter your phone!',
+                        message: "Please enter your phone!",
                       },
                     ]}
                     label="Phone"
@@ -276,14 +263,14 @@ export default function SignUpForm() {
               {/* Button */}
               <Form.Item className="form-input-group">
                 <Button type="submit" className="button button--blue--dark">
-                  <span>{isLoading ? <Spinner /> : 'Sign Up'}</span>
+                  <span>{isLoading ? <Spinner /> : "Sign Up"}</span>
                 </Button>
               </Form.Item>
             </Form>
 
             {/* Sign Up */}
             <p className="signin-text">
-              Already have an account?{' '}
+              Already have an account?{" "}
               <Link to="/signin" className="signin-link">
                 Sign in
               </Link>

@@ -1,9 +1,9 @@
-import { createAsyncThunk, createSlice } from '@reduxjs/toolkit';
-import { message } from 'antd';
-import paymentAPI from '../../ api/payment';
+import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
+import { message } from "antd";
+import paymentAPI from "../../api/payment";
 
 export const fetchPayments = createAsyncThunk(
-  'paymentsSlice/fetchPayments',
+  "paymentsSlice/fetchPayments",
   async () => {
     try {
       const result = await paymentAPI.getAll();
@@ -15,7 +15,7 @@ export const fetchPayments = createAsyncThunk(
 );
 
 export const fetchPayment = createAsyncThunk(
-  'paymentsSlice/fetchPayment',
+  "paymentsSlice/fetchPayment",
   async (payment_id) => {
     try {
       const result = await paymentAPI.getOne(payment_id);
@@ -27,7 +27,7 @@ export const fetchPayment = createAsyncThunk(
 );
 
 export const fetchDetails = createAsyncThunk(
-  'paymentsSlice/fetchDetails',
+  "paymentsSlice/fetchDetails",
   async (payment_id) => {
     try {
       const result = await paymentAPI.getDetails(payment_id);
@@ -40,7 +40,7 @@ export const fetchDetails = createAsyncThunk(
 
 // Reducer
 const paymentsSlice = createSlice({
-  name: 'paymentsSlice',
+  name: "paymentsSlice",
   initialState: {
     payments: [],
     details: [],

@@ -1,9 +1,9 @@
-import { createAsyncThunk, createSlice } from '@reduxjs/toolkit';
-import { message } from 'antd';
-import userAPI from '../../ api/user';
+import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
+import { message } from "antd";
+import userAPI from "../../api/user";
 
 export const signIn = createAsyncThunk(
-  'usersSlice/signIn',
+  "usersSlice/signIn",
   async ({ email, password }) => {
     try {
       const result = await userAPI.signIn(email, password);
@@ -11,12 +11,12 @@ export const signIn = createAsyncThunk(
         return Promise.reject(result.response.data.errors[0]);
       }
       const accessToken = result.data.token;
-      localStorage.setItem('accessToken', accessToken);
+      localStorage.setItem("accessToken", accessToken);
 
       // Get information of current user after getting token
       const currentPatient = await userAPI.getOne();
       localStorage.setItem(
-        'currentPatient',
+        "currentPatient",
         JSON.stringify(currentPatient.data.data)
       );
       return currentPatient.data.data;
@@ -26,7 +26,7 @@ export const signIn = createAsyncThunk(
   }
 );
 
-export const signUp = createAsyncThunk('usersSlice/signUp', async (patient) => {
+export const signUp = createAsyncThunk("usersSlice/signUp", async (patient) => {
   try {
     const result = await userAPI.signUp(patient);
     return result.data.data;
@@ -35,16 +35,16 @@ export const signUp = createAsyncThunk('usersSlice/signUp', async (patient) => {
   }
 });
 
-export const verify = createAsyncThunk('usersSlice/verify', async (code) => {
+export const verify = createAsyncThunk("usersSlice/verify", async (code) => {
   try {
     const result = await userAPI.verify(code);
     if (result.data.data.is_verified === 1) {
       const clonecurrentPatient = JSON.parse(
-        localStorage.getItem('currentPatient')
+        localStorage.getItem("currentPatient")
       );
       clonecurrentPatient.is_verified = true;
       localStorage.setItem(
-        'currentPatient',
+        "currentPatient",
         JSON.stringify(clonecurrentPatient)
       );
       return result.data.data.is_verified;
@@ -55,7 +55,7 @@ export const verify = createAsyncThunk('usersSlice/verify', async (code) => {
 });
 
 export const resendCode = createAsyncThunk(
-  'usersSlice/resendCode',
+  "usersSlice/resendCode",
   async () => {
     try {
       const result = await userAPI.resendCode();
@@ -67,7 +67,7 @@ export const resendCode = createAsyncThunk(
 );
 
 export const updateInformation = createAsyncThunk(
-  'usersSlice/updateInformation',
+  "usersSlice/updateInformation",
   async (newInformation) => {
     try {
       const result = await userAPI.update(newInformation);
@@ -79,7 +79,7 @@ export const updateInformation = createAsyncThunk(
 );
 
 export const getIdentity = createAsyncThunk(
-  'usersSlice/getIdentity',
+  "usersSlice/getIdentity",
   async () => {
     try {
       const result = await userAPI.getOne();
@@ -91,7 +91,7 @@ export const getIdentity = createAsyncThunk(
 );
 
 export const changePassword = createAsyncThunk(
-  'usersSlice/changePassword',
+  "usersSlice/changePassword",
   async (password) => {
     try {
       const result = await userAPI.changePassword(password);
@@ -103,7 +103,7 @@ export const changePassword = createAsyncThunk(
 );
 
 const usersSlice = createSlice({
-  name: 'usersSlice',
+  name: "usersSlice",
   initialState: {
     users: [],
     userNeedUpdate: {},
@@ -126,9 +126,9 @@ const usersSlice = createSlice({
       state.hasError = false;
     },
     [signIn.fulfilled]: (state, action) => {
-      message.success('Signed In successfully!', 3);
+      message.success("Signed In successfully!", 3);
       state.userNeedUpdate = action.payload;
-      window.location.href = '/';
+      window.location.href = "/";
       state.isLoading = false;
       state.hasError = false;
     },
@@ -161,11 +161,11 @@ const usersSlice = createSlice({
     },
     [signUp.fulfilled]: (state, action) => {
       message.success(
-        'Signed Up successfully, OTP has been sent. Please login and verify your email!',
+        "Signed Up successfully, OTP has been sent. Please login and verify your email!",
         5
       );
       setTimeout(() => {
-        window.location.href = '/signin';
+        window.location.href = "/signin";
       }, 2000);
       state.isLoading = false;
       state.hasError = false;
@@ -177,9 +177,9 @@ const usersSlice = createSlice({
     },
     // Verify
     [verify.pending]: (state) => {
-      const key = 'verify';
+      const key = "verify";
       message.loading({
-        content: 'Action in progress...',
+        content: "Action in progress...",
         key,
       });
       state.isLoading = true;
@@ -187,9 +187,9 @@ const usersSlice = createSlice({
     },
     [verify.fulfilled]: (state, action) => {
       setTimeout(() => {
-        const key = 'verify';
+        const key = "verify";
         message.success({
-          content: 'Account has been verified successfully!',
+          content: "Account has been verified successfully!",
           key,
           duration: 2,
         });
@@ -210,7 +210,7 @@ const usersSlice = createSlice({
     },
     [resendCode.fulfilled]: (state, action) => {
       message.success(
-        'Verified code has been resent. Please check your phone!',
+        "Verified code has been resent. Please check your phone!",
         3
       );
       state.isLoading = false;
@@ -227,10 +227,10 @@ const usersSlice = createSlice({
       state.hasError = false;
     },
     [updateInformation.fulfilled]: (state, action) => {
-      message.success('Updated your information successfully!', 3);
-      let currentPatient = JSON.parse(localStorage.getItem('currentPatient'));
+      message.success("Updated your information successfully!", 3);
+      let currentPatient = JSON.parse(localStorage.getItem("currentPatient"));
       currentPatient = action.payload;
-      localStorage.setItem('currentPatient', JSON.stringify(currentPatient));
+      localStorage.setItem("currentPatient", JSON.stringify(currentPatient));
       action.payload.avatar = [{ url: action.payload.avatar }];
       state.userNeedUpdate = action.payload;
       state.currentUser = action.payload;
@@ -248,7 +248,7 @@ const usersSlice = createSlice({
       state.hasError = false;
     },
     [changePassword.fulfilled]: (state, action) => {
-      message.success('Changed your password successfully!', 3);
+      message.success("Changed your password successfully!", 3);
       state.isLoading = false;
       state.hasError = false;
     },
