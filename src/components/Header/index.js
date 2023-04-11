@@ -1,30 +1,30 @@
-import React, { useEffect } from 'react';
-import { Col, Row } from 'antd';
-import { BsClock } from 'react-icons/bs';
+import React, { useEffect } from "react";
+import { Col, Row } from "antd";
+import { BsClock } from "react-icons/bs";
 import {
   FaFacebookF,
   FaPinterestP,
   FaInstagram,
   FaTelegramPlane,
   FaPhoneAlt,
-} from 'react-icons/fa';
-import { AiOutlineTwitter } from 'react-icons/ai';
+} from "react-icons/fa";
+import { AiOutlineTwitter } from "react-icons/ai";
 
-import Button from '../../components/Button';
-import { Link } from 'react-router-dom';
-import { isLogin } from '../../helpers/isLogin';
-import { useDispatch, useSelector } from 'react-redux';
-import { getIdentity, selectCurrentUser } from '../../store/slices/usersSlice';
+import Button from "../../components/Button";
+import { Link } from "react-router-dom";
+import { isLogin } from "../../helpers/isLogin";
+import { useDispatch, useSelector } from "react-redux";
+import { getIdentity, selectCurrentUser } from "../../store/slices/usersSlice";
 
 export default function Header() {
   const dispatch = useDispatch();
   const currentUser = useSelector(selectCurrentUser);
 
-  useEffect(() => {
-    if (Object.keys(currentUser).length === 0) {
-      dispatch(getIdentity());
-    }
-  }, [dispatch, currentUser]);
+  // useEffect(() => {
+  //   if (Object.keys(currentUser).length === 0) {
+  //     dispatch(getIdentity());
+  //   }
+  // }, [dispatch, currentUser]);
 
   return (
     <section className="header-container">
@@ -74,7 +74,7 @@ export default function Header() {
                     src={
                       Object.keys(currentUser).length > 0
                         ? currentUser.avatar[0].url
-                        : ''
+                        : ""
                     }
                     alt="avatar"
                   />
@@ -82,9 +82,9 @@ export default function Header() {
                 </Link>
                 <Button
                   onClick={() => {
-                    localStorage.removeItem('currentPatient');
-                    localStorage.removeItem('accessToken');
-                    window.location.href = '/signin';
+                    localStorage.removeItem("currentPatient");
+                    localStorage.removeItem("accessToken");
+                    window.location.href = "/signin";
                   }}
                   type="button"
                   className="button button--text--white sign-out-btn"

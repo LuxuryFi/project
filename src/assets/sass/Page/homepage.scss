@@ -7,7 +7,9 @@
 .banner-container {
   height: 100vh;
   // width: 100vw;
-  background-image: url(../../img/banner-bg.jpeg);
+  // background-image: url(../../img/banner-bg.jpeg);
+  background-image: url(http://subsolardesigns.com/odrin/demo1/wp-content/uploads/sites/8/2017/05/shelf_hero_right2.jpg);
+
   background-position: center center;
   background-size: cover;
   background-repeat: no-repeat;
@@ -69,411 +71,160 @@
   }
 }
 
-// Service
-.service-container {
-  background-color: $color-white-0;
-  .service-list {
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    gap: 24px;
-    .service-item {
-      text-align: center;
-      box-shadow: 0 2px 28px 0 rgb(0 0 0 / 9%);
-      padding: $pd-4 - 5 $pd-3;
-      border: 2px solid $color-blue-3;
-      border-radius: $border-radius;
-      transition: 0.4s ease;
-      // display: none;
-      .icon-container {
-        width: 90px;
-        height: 90px;
-        border-radius: 50%;
-        background-color: $color-blue-4;
-        border: 1px dashed $color-blue-5;
-        margin: 0 auto $mg-1;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        .icon {
-          @include styleText($color-blue-5, $fs-2, $fw-0);
-        }
-      }
-      .title {
-        @include styleText($color-black-0, $fs-3, $fw-3);
-        margin-bottom: $mg-2;
-      }
-      .description {
-        line-height: $line-height-1;
-        @include styleText($color-gray-1, $fs-0 + 1, $fw-0);
-      }
-      &:hover {
-        border: 2px solid$color-white-0;
-        transform: translateY(-10px);
-      }
-    }
-  }
-}
-
-// Features
-.feature-container {
-  background-image: url(../../img/feature-bg.jpeg);
-  background-repeat: no-repeat;
-  background-attachment: fixed;
-  background-size: cover;
-  background-position: center center;
+// Discover
+.discover-container {
   .title {
+    padding: 0 0 36px;
+    font-size: 3rem;
     text-align: center;
-    max-width: 650px;
-    margin: 0 auto $mg-3 + 5;
-    span {
-      @include styleText($color-white-0, $fs-3, $fw-0);
-    }
-    h2 {
-      @include styleText($color-white-0, $fs-4, $fw-3);
-      margin: $mg-4 + 2 0;
-    }
-    p {
-      @include styleText($color-white-0, $fs-0 + 1, $fw-0);
-      line-height: $line-height-1;
-    }
   }
-  .feature-list {
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    gap: 24px;
-    .feature-item {
-      text-align: center;
-      padding: $pd-4 - 5;
-      border-radius: $border-radius-3;
-      background-position: center center;
-      background-size: cover;
-      background-repeat: no-repeat;
-      z-index: 1;
-      margin-bottom: $mg-3 - 10;
-      transition: 0.5s ease;
-      position: relative;
-      cursor: pointer;
-      background-image: url(../../img/feature-item-bg.jpeg);
-      .icon-container {
-        margin: 0 auto;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        height: 80px;
-        width: 80px;
-        background-color: $color-gray-4;
-        border: 1px solid $color-blue-1;
-        border-radius: 50%;
-        transition: 0.5s ease;
-        margin-bottom: $mg-1;
-        .icon-content {
-          width: 60px;
-          height: 60px;
-          display: flex;
-          align-items: center;
-          justify-content: center;
-          border-radius: 50%;
-          background-color: $color-blue-4;
-          transition: 0.4s ease;
-          .icon {
-            transition: 0.5s;
-            @include styleText($color-blue-1, $fs-2, $fw-0);
-          }
-        }
-      }
-      .title {
-        @include styleText($color-black-0, $fs-5, $fw-3);
-        margin-bottom: $mg-1;
-      }
-      .description {
-        @include styleText($color-gray-0, $fs-0 + 1, $fw-0);
-        line-height: $line-height-1;
-        margin-bottom: $mg-4 + 2;
-      }
-      .button {
-        margin: 0 auto;
-      }
-      &::before {
-        content: "";
-        position: absolute;
-        top: 0;
-        left: 0;
-        width: 100%;
-        height: 100%;
-        opacity: 1;
-        background-color: $color-white-0;
-        border-radius: $border-radius-3;
-        z-index: -1;
-        transition: 0.5s ease;
-      }
-      &:hover {
-        transform: translateY(-10px);
-        .title,
-        .description {
-          color: $color-white-0;
-        }
-        .icon-container {
-          .icon-content {
-            background-color: $color-white-0;
-          }
-        }
-      }
-      &:hover::before {
-        opacity: 0.6;
-        background-color: $color-black-0;
-      }
+  .discover-content {
+    .heading {
+      color: #de3241;
+      font-weight: 500;
+      font-size: 15px;
+      line-height: 26px;
+      border: none;
+      text-transform: uppercase;
+      letter-spacing: 0.75px;
     }
-  }
-}
-
-// App
-.app-container {
-  background-color: $color-white-0;
-  .app-content {
-    .left {
-      width: 100%;
-      padding: 0 $pd-3;
-      display: flex;
-      align-items: center;
-      .image {
-        display: block;
-        width: 100%;
-      }
-    }
-    .right {
-      padding: 0 $pd-1;
-      .heading {
-        @include styleText($color-blue-1, $fs-3, $fw-0);
-      }
-      .title {
-        margin: $mg-4 0;
-        max-width: 350px;
-        @include styleText($color-black-0, $fs-4 - 4, $fw-3);
-      }
-      .description {
-        margin-bottom: $mg-2 - 4;
-        line-height: $line-height-1;
-        @include styleText($color-gray-1, $fs-0 + 1, $fw-0);
-      }
-      .app-list {
-        width: 100%;
-        .app-item {
-          display: flex;
-          .left {
-            display: flex;
-            justify-content: center;
-            align-items: flex-start;
-            padding: 0;
-            width: auto;
-            .icon-container {
-              width: 50px;
-              height: 50px;
-              border-radius: 50%;
-              background-color: $color-gray-4;
-              display: flex;
-              align-items: center;
-              justify-content: center;
-              transition: 0.25s ease;
-              .icon {
-                transition: 0.25s ease;
-                @include styleText($color-black-0, $fs-5, $fw-0);
-              }
-            }
-          }
-          .right {
-            .title {
-              @include styleText($color-black-0, $fs-3, $fw-3);
-              margin: 0 0 $mg-0;
-            }
-          }
-          &:hover {
-            .icon-container {
-              background-color: $color-blue-1;
-              .icon {
-                color: $color-white-0;
-              }
-            }
-          }
-        }
-      }
-    }
-  }
-}
-
-// Solutions
-.solution-container {
-  background-image: url(../../img/solutions-bg.jpeg);
-  background-position: center center;
-  background-size: cover;
-  background-repeat: no-repeat;
-  background-attachment: fixed;
-  .solution-content {
-    .left {
-      text-align: left;
-      padding: 0 $pd-1;
-      .heading {
-        @include styleText($color-blue-1, $fs-3, $fw-0);
-      }
-      .title {
-        margin: $mg-4 0;
-        @include styleText($color-black-0, $fs-4 - 4, $fw-3);
-      }
-      .description {
-        margin-bottom: $mg-2 - 4;
-        line-height: $line-height-1;
-        @include styleText($color-gray-1, $fs-0 + 1, $fw-0);
-      }
-      .solution-list {
-        padding-right: $pd-4;
-        .solution-item {
+    .discover-list {
+      .item {
+        text-align: center;
+        .cover {
+          width: 100%;
+          height: auto;
+          max-height: 328px;
           display: block;
-          width: 100%;
-          position: relative;
-          border-radius: $border-radius-2;
-          transition: 0.4s ease;
-          background-color: $color-gray-5;
-          margin-bottom: $mg-4 + 5;
-          .content {
-            padding: $pd-3;
-            @include styleText($color-black-0, $fs-3, $fw-1);
-            border-radius: $border-radius-2;
-            display: flex;
-            width: 100%;
-            align-items: center;
-            position: relative;
-            transition: 0.4s ease;
-            .icon {
-              @include styleText($color-blue-6, $fs-5, $fw-0);
-              margin-right: $mg-4;
+        }
+        .bottom {
+          display: flex;
+          flex-direction: column;
+          justify-content: space-between;
+          min-height: 130px;
+          .info {
+            .name {
+              font-size: 19px;
+              font-weight: 700;
+              line-height: 1.7rem;
+              margin-top: 12px;
+            }
+            .author {
+              color: #797979;
+              font-weight: 400;
+              margin: 0.35em 0 6px;
             }
           }
-          &::before {
-            content: "";
-            display: block;
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 0;
-            background-color: $color-blue-1;
-            border-radius: $border-radius-2;
-            transition: 0.6s ease;
-          }
-          &:hover::before {
-            height: 100%;
-          }
-          &:hover {
-            box-shadow: 0 2px 28px 0 rgb(0 0 0 / 9%);
-            .content {
-              @include styleText($color-white-0, $fs-3, $fw-1);
-            }
+          .prices {
+            // flex: 1;
+            color: #de3241;
+            font-weight: 500;
+            line-height: 1.2rem;
+            font-size: 19px;
           }
         }
-      }
-    }
-    .right {
-      width: 100%;
-      padding: 0 $pd-3;
-      .image {
-        display: block;
-        width: 100%;
       }
     }
   }
 }
 
-// News
-.news-container {
-  .news-content {
-    .section-title {
-      text-align: center;
-      max-width: 650px;
-      margin: 0 auto $mg-3 + 5;
-      .heading {
-        @include styleText($color-blue-1, $fs-3, $fw-0);
-      }
-      .title {
-        margin: $mg-4 0;
-        @include styleText($color-black-0, $fs-4 - 4, $fw-3);
-      }
-      .description {
-        margin-bottom: $mg-2 - 4;
-        line-height: $line-height-1;
-        @include styleText($color-gray-1, $fs-0 + 1, $fw-0);
-      }
+// Trending
+.trending-container,
+.best-seller-container,
+.newest-container {
+  .title {
+    padding: 0 0 36px;
+    font-size: 3rem;
+    text-align: center;
+  }
+  .trending-content,
+  .best-seller-content,
+  .newest-content {
+    .heading {
+      color: #de3241;
+      font-weight: 500;
+      font-size: 15px;
+      line-height: 26px;
+      border: none;
+      text-transform: uppercase;
+      letter-spacing: 0.75px;
     }
-    .news-list {
-      display: grid;
-      grid-template-columns: repeat(3, 1fr);
-      gap: 24px;
-      .news-item {
-        position: relative;
-        width: 100%;
-        height: 100%;
-        .new-image {
+    .trending-list,
+    .best-seller-list,
+    .newest-list {
+      .item {
+        text-align: center;
+        .cover {
           width: 100%;
-          height: 100%;
+          // height: auto;
+          height: 328px;
           display: block;
-          box-shadow: 0 2px 28px 0 rgb(0 0 0 / 9%);
         }
-        .content {
-          .date {
-            position: absolute;
-            top: 0;
-            left: 0;
-            display: inline-block;
-            padding: $pd-0 $pd-3;
-            @include styleText($color-black-0, $fs-0, $fw-0);
-            background-color: $color-white-0;
-            box-shadow: 0 2px 28px 0 rgb(0 0 0 / 9%);
-            transition: 0.4s ease;
-          }
-          .content-overlay {
-            position: absolute;
-            bottom: 0;
-            left: 0;
-            right: 0;
-            padding: $pd-3;
-            transition: 0.4s ease;
-            z-index: 2;
-            .title {
-              @include styleText($color-white-0, $fs-3 + 2, $fw-1);
-              line-height: $line-height-0;
+        .bottom {
+          display: flex;
+          flex-direction: column;
+          justify-content: space-between;
+          min-height: 130px;
+          .info {
+            .name {
+              font-size: 19px;
+              font-weight: 700;
+              line-height: 1.7rem;
+              margin-top: 12px;
+            }
+            .author {
+              color: #797979;
+              font-weight: 400;
+              margin: 0.35em 0 6px;
             }
           }
-        }
-        &::before {
-          content: "";
-          background: -webkit-gradient(
-            linear,
-            left top,
-            left bottom,
-            from(rgba(0, 0, 0, 0)),
-            to(black)
-          );
-          background: linear-gradient(to bottom, rgba(0, 0, 0, 0), black);
-          width: 100%;
-          height: 100%;
-          left: 0;
-          bottom: 0;
-          position: absolute;
-          z-index: 1;
-        }
-        &:hover {
-          .date {
-            background-color: $color-blue-1;
-            color: $color-white-0;
-          }
-          .content-overlay {
-            transform: translateY(-10px);
+          .prices {
+            // flex: 1;
+            color: #de3241;
+            font-weight: 500;
+            line-height: 1.2rem;
+            font-size: 19px;
           }
         }
       }
     }
+  }
+  .button-slide {
+    background: gray;
+    width: 18px;
+    height: 18px;
+    border-radius: 9999px;
+  }
+
+  .button-dots {
+    position: absolute;
+    left: 0;
+  }
+
+  .slick-slide {
+    padding: 0 3px !important;
+  }
+
+  .slick-dots {
+    position: relative;
+    display: flex !important;
+    justify-content: center;
+    bottom: -30px;
+    cursor: pointer;
+  }
+
+  .slick-dots li {
+    width: fit-content !important;
+    margin: 0 6px -20px 0 !important;
+  }
+
+  .slick-dots .slick-active > div {
+    background: #227c9d !important;
   }
 }
 
 // animation: tada 5s infinitie;
+
 @keyframes tada {
   0% {
     transform: scale3d(1, 1, 1);

@@ -1,15 +1,15 @@
-import React from 'react';
-import { FaFacebookF, FaPinterestP, FaInstagram } from 'react-icons/fa';
-import { AiOutlineTwitter } from 'react-icons/ai';
-import { BsTelephoneFill } from 'react-icons/bs';
-import { TfiEmail } from 'react-icons/tfi';
-import { MdPlace } from 'react-icons/md';
-import { Link } from 'react-router-dom';
-import { Image } from 'antd';
+import React from "react";
+import { FaFacebookF, FaPinterestP, FaInstagram } from "react-icons/fa";
+import { AiOutlineTwitter } from "react-icons/ai";
+import { BsTelephoneFill } from "react-icons/bs";
+import { TfiEmail } from "react-icons/tfi";
+import { MdPlace } from "react-icons/md";
+import { Link } from "react-router-dom";
+import { Image } from "antd";
 
-import doctor1 from '../../assets/img/doctor1.jpeg';
-import doctor2 from '../../assets/img/doctor2.jpeg';
-import doctor3 from '../../assets/img/doctor3.jpeg';
+import doctor1 from "../../assets/img/doctor1.jpeg";
+import doctor2 from "../../assets/img/doctor2.jpeg";
+import doctor3 from "../../assets/img/doctor3.jpeg";
 
 export default function Footer() {
   return (
@@ -18,7 +18,7 @@ export default function Footer() {
         <div className="container-fluid">
           <div className="footer-content">
             <div className="footer-item">
-              <h3 className="title">MedCare</h3>
+              <h3 className="title">BookStore</h3>
               <p className="description">
                 Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
                 eiusmod tempor incididunt ut labore et dolore aliqua.
@@ -38,7 +38,7 @@ export default function Footer() {
                 </li>
               </ul>
             </div>
-            <div className="footer-item">
+            {/* <div className="footer-item">
               <h3 className="title">Instagram</h3>
               <ul className="image-list">
                 <Image src={doctor1} className="image" />
@@ -48,7 +48,7 @@ export default function Footer() {
                 <Image src={doctor2} className="image" />
                 <Image src={doctor3} className="image" />
               </ul>
-            </div>
+            </div> */}
             <div className="footer-item">
               <h3 className="title">Userful Links</h3>
               <ul className="link-list">
@@ -110,7 +110,7 @@ export default function Footer() {
       </section>
       <section className="copyright-container">
         <p>
-          Copyright © 2022 MedCares. All Rights Reserved by{' '}
+          Copyright © 2022 MedCares. All Rights Reserved by{" "}
           <Link to="#" className="link">
             Vu Nam
           </Link>

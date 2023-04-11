@@ -1,11 +1,12 @@
-import { configureStore, getDefaultMiddleware } from '@reduxjs/toolkit';
-import appointmentsSlice from './slices/appointmentsSlice';
-import clinicsSlice from './slices/clinicsSlice';
-import usersSlice from './slices/usersSlice';
-import supportsSlice from './slices/supportsSlice';
-import articlesSlice from './slices/articlesSlice';
-import paymentsSlice from './slices/paymentsSlice';
-import medicalRecordsSclie from './slices/medicalRecordsSclie';
+import { configureStore, getDefaultMiddleware } from "@reduxjs/toolkit";
+import appointmentsSlice from "./slices/appointmentsSlice";
+import clinicsSlice from "./slices/clinicsSlice";
+import usersSlice from "./slices/usersSlice";
+import supportsSlice from "./slices/supportsSlice";
+import articlesSlice from "./slices/articlesSlice";
+import paymentsSlice from "./slices/paymentsSlice";
+import medicalRecordsSclie from "./slices/medicalRecordsSclie";
+import booksSlice from "./slices/booksSlice";
 
 export default configureStore({
   reducer: {
@@ -16,6 +17,7 @@ export default configureStore({
     articles: articlesSlice,
     payments: paymentsSlice,
     medicalRecords: medicalRecordsSclie,
+    books: booksSlice,
   },
   middleware: () =>
     getDefaultMiddleware({
