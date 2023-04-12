@@ -44,7 +44,7 @@ export default function VerifyForm() {
             <h3 className="title">
               Thank you for registering with{' '}
               <Link to="/" className="app-name">
-                MedCares!
+                Bookstore!
               </Link>
             </h3>
             <p className="description">

@@ -77,7 +77,7 @@
         padding-right: $pd-1;
       }
       .title {
-        @include styleText($color-blue-2, $fs-4, $fw-2);
+        @include styleText($color-tomato, $fs-4, $fw-2);
         margin-bottom: $mg-2;
         white-space: nowrap;
       }

@@ -2,7 +2,7 @@ import React from 'react';
 import { Row, Col } from 'antd';
 import { IoCheckmarkDone } from 'react-icons/io5';
 
-import bgAbout from '../../assets/img/about-bg.png';
+import bgAbout from '../../assets/img/about-bg.PNG';
 
 import { Animate } from '../AnimateIn';
 
@@ -20,14 +20,10 @@ export default function AboutUs() {
             <Animate.FadeInDown>
               <h4 className="heading">About Us</h4>
               <h3 className="title">
-                Connect to Call a Doctor by Video or Audio During the COVID-19
-                Pandemic
+                Best bookstore online
               </h3>
               <p className="description">
-                Many healthcare systems around the world together with
-                government agencies and startup companies are building and
-                delivering Telehealth solutions the future of non-emergency and
-                routine healthcare delivery
+              bookstore.com accepts online orders and has home delivery. DO NOT support ordering and receiving directly bookstore.com accepts online orders and delivers to your door. DO NOT support ordering and receiving goods directly at the office as well as all bookstore systems nationwide at the office as well as all bookstore systems nationwide
               </p>
             </Animate.FadeInDown>
             <ul className="about-features">
@@ -35,7 +31,7 @@ export default function AboutUs() {
                 <li className="about-item">
                   <div className="content">
                     <IoCheckmarkDone className="icon" />
-                    <span className="text"> Cold, Cough, Flu</span>
+                    <span className="text"> Manga, Light novel</span>
                   </div>
                 </li>
               </Animate.FadeInUp>
@@ -43,7 +39,7 @@ export default function AboutUs() {
                 <li className="about-item">
                   <div className="content">
                     <IoCheckmarkDone className="icon" />
-                    <span className="text">Chronic Disease</span>
+                    <span className="text">Guide and Textbook</span>
                   </div>
                 </li>
               </Animate.FadeInUp>
@@ -51,7 +47,7 @@ export default function AboutUs() {
                 <li className="about-item">
                   <div className="content">
                     <IoCheckmarkDone className="icon" />
-                    <span className="text">Allergies</span>
+                    <span className="text">Album</span>
                   </div>
                 </li>
               </Animate.FadeInUp>
@@ -59,7 +55,7 @@ export default function AboutUs() {
                 <li className="about-item">
                   <div className="content">
                     <IoCheckmarkDone className="icon" />
-                    <span className="text">Pain</span>
+                    <span className="text">CD</span>
                   </div>
                 </li>
               </Animate.FadeInUp>
@@ -67,7 +63,7 @@ export default function AboutUs() {
                 <li className="about-item">
                   <div className="content">
                     <IoCheckmarkDone className="icon" />
-                    <span className="text">Women's Health issues</span>
+                    <span className="text">Novel</span>
                   </div>
                 </li>
               </Animate.FadeInUp>
@@ -75,7 +71,7 @@ export default function AboutUs() {
                 <li className="about-item">
                   <div className="content">
                     <IoCheckmarkDone className="icon" />
-                    <span className="text">Medication Questions</span>
+                    <span className="text">Art</span>
                   </div>
                 </li>
               </Animate.FadeInUp>

@@ -26,7 +26,7 @@
         flex-direction: column;
         justify-content: center;
         .title {
-          @include styleText($color-blue-2, $fs-6 - 2, $fw-3);
+          @include styleText($color-tomato, $fs-6 - 2, $fw-3);
         }
         .sub-title {
           margin: $mg-4 0 $mg-2;

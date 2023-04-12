@@ -76,10 +76,10 @@ export default function MedicalRecordList() {
   return (
     <div className="medical-record-container">
       <div className="header">
-        <h3 className="title">Medical Record</h3>
-        <Link to="create" className="button button--blue--light">
+        <h3 className="title">Favorite</h3>
+        {/* <Link to="create" className="button button--blue--light">
           Add medical record
-        </Link>
+        </Link> */}
       </div>
 
       <Table

@@ -232,21 +232,7 @@ export default function UserForm() {
           </Col>
           <Col className="right" sm={24} md={12} lg={12} xl={12} xll={12}>
             {/* Blood group */}
-            <Form.Item
-              name="blood"
-              label="Blood group"
-              className="form-input-group"
-            >
-              <Select placeholder="Select blood group">
-                <Option value="A-">A-</Option>
-                <Option value="A+">A+</Option>
-                <Option value="B-">B-</Option>
-                <Option value="B+">B+</Option>
-                <Option value="AB-">AB-</Option>
-                <Option value="AB+">AB+</Option>
-                <Option value="O">O</Option>
-              </Select>
-            </Form.Item>
+
 
             {/* Date of birth */}
             <Form.Item

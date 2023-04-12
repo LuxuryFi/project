@@ -4,8 +4,8 @@ import { Link, useNavigate } from "react-router-dom";
 import { useSelector, useDispatch } from "react-redux";
 import { FaFacebookF, FaTwitter, FaGoogle } from "react-icons/fa";
 
-import medcaresLogo from "../../assets/img/medcares-logo.png";
-import bannerLoginBg from "../../assets/img/banner-login-bg.png";
+// import medcaresLogo from "../../assets/img/medcares-logo.jpg";
+import bannerLoginBg from "../../assets/img/banner-login-bg.jpg";
 import Button from "../../components/Button";
 import Spinner from "../../components/Spinner";
 import { selectUserIsLoading, signIn } from "../../store/slices/usersSlice";

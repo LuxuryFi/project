@@ -35,7 +35,6 @@ export default function MyProfile() {
                   />
                   <h3 className="name">{currentUser.full_name}</h3>
                   <h5 className="category">
-                    BDS, MDS - Oral &amp; Maxillofacial Surgery
                   </h5>
                 </div>
                 <ul className="sidebar-list">

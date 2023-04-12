@@ -32,8 +32,8 @@
   &.button--blue--dark {
     @include styleButton(
       $color-white-0,
-      $color-blue-2,
-      $color-blue-2,
+      $color-tomato,
+      $color-tomato,
       $fs-0 + 1,
       $fw-1,
       $pd-0,
@@ -56,7 +56,7 @@
       $pd-3
     );
     &:hover {
-      @include hoverButton($color-white-0, $color-blue-2, $color-blue-2);
+      @include hoverButton($color-white-0, $color-tomato, $color-tomato);
     }
     font-weight: normal;
   }

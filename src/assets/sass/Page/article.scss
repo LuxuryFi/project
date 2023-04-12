@@ -29,7 +29,7 @@
         .content {
           .title {
             transform: 0.5s ease;
-            @include styleText($color-blue-2, $fs-5, $fw-2);
+            @include styleText($color-tomato, $fs-5, $fw-2);
             line-height: $line-height-1;
             &:hover {
               @include styleText($color-link-0, $fs-5, $fw-2);

@@ -24,7 +24,7 @@
         .nav-link {
           display: flex;
           align-items: center;
-          @include styleText($color-blue-2, $fs-0, $fw-1);
+          @include styleText($color-tomato, $fs-0, $fw-1);
           transition: 0.25s ease;
           .text {
             margin-right: $mg-0;

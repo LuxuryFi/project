@@ -5,7 +5,7 @@ import { useSelector, useDispatch } from "react-redux";
 import moment from "moment";
 
 import medcaresLogo from "../../assets/img/medcares-logo.png";
-import bannerLoginBg from "../../assets/img/banner-login-bg.png";
+import bannerLoginBg from "../../assets/img/banner-login-bg.jpg";
 import Button from "../../components/Button";
 import Spinner from "../../components/Spinner";
 import { selectUserIsLoading, signUp } from "../../store/slices/usersSlice";

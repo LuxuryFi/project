@@ -28,7 +28,7 @@ ul {
 }
 
 thead[class*='ant-table-thead'] th {
-  background-color: rgba($color: $color-blue-2, $alpha: 1);
+  background-color: rgba($color: $color-tomato, $alpha: 1);
 }
 
 .ant-table-wrapper {
@@ -43,7 +43,7 @@ thead[class*='ant-table-thead'] th {
 
 // ----------- Type Writer -----------
 .Typewriter__wrapper {
-  @include styleText($color-blue-2, $fs-6 - 2, $fw-3);
+  @include styleText($color-tomato, $fs-6 - 2, $fw-3);
   text-transform: capitalize;
 }
 

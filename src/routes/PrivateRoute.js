@@ -9,9 +9,6 @@ const PrivateRoute = ({ children, roles }) => {
   }
 
   // If the account is not verified
-  if (!currentPatient.is_verified) {
-    return <Navigate to="/verify" replace={true} />;
-  }
 
   // Authorised role will return the children route
   return children;

@@ -3,7 +3,7 @@ import { Link, NavLink } from "react-router-dom";
 import { HiOutlineChevronDown } from "react-icons/hi";
 import { AiOutlineShoppingCart } from "react-icons/ai";
 
-import medcaresLogo from "../../assets/img/medcares-logo.png";
+// import medcaresLogo from "../../assets/img/medcares-logo.png";
 import { useDispatch, useSelector } from "react-redux";
 import { fetchTypes, selectTypes } from "../../store/slices/articlesSlice";
 
@@ -59,11 +59,6 @@ export default function Navigation({ activeBg }) {
           <li className="nav-item">
             <NavLink end to="/contact" className="nav-link">
               <span className="text">Contact</span>
-            </NavLink>
-          </li>
-          <li className="nav-item">
-            <NavLink end to="/articles" className="nav-link">
-              <span className="text">News</span>
             </NavLink>
           </li>
           {/* <li className="nav-item">

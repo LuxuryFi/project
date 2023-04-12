@@ -132,7 +132,7 @@ export default function PaymentDetail() {
                           alt="logo navigation"
                           className="logo-img"
                         />
-                        <span className="logo-text">MedCares</span>
+                        <span className="logo-text">Bookstore</span>
                       </div>
                     </Col>
                     <Col

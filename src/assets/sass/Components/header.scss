@@ -1,6 +1,6 @@
 .header-container {
   .header-content {
-    background-color: $color-blue-2;
+    background-color: $color-tomato;
     padding: $pd-3 0;
     .left {
       display: flex;
@@ -64,7 +64,7 @@
           display: inline-block;
           margin-right: $mg-4;
         }
-        @include styleText($color-blue-2, $fs-0, $fw-0);
+        @include styleText($color-tomato, $fs-0, $fw-0);
         &:hover {
           @include styleText($color-white-1, $fs-0, $fw-0);
         }

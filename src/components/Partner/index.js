@@ -27,62 +27,7 @@ export default function Partner() {
       <div className="partner-content">
         <div className="container-fluid">
           <ul className="partner-list">
-            <li className="partner-item">
-              <img
-                src={partnerImg1}
-                className="partner-img"
-                alt="partner-img"
-              />
-            </li>
-            <li className="partner-item">
-              <img
-                src={partnerImg2}
-                className="partner-img"
-                alt="partner-img"
-              />
-            </li>
-            <li className="partner-item">
-              <img
-                src={partnerImg3}
-                className="partner-img"
-                alt="partner-img"
-              />
-            </li>
-            <li className="partner-item">
-              <img
-                src={partnerImg4}
-                className="partner-img"
-                alt="partner-img"
-              />
-            </li>
-            <li className="partner-item">
-              <img
-                src={partnerImg5}
-                className="partner-img"
-                alt="partner-img"
-              />
-            </li>
-            <li className="partner-item">
-              <img
-                src={partnerImg6}
-                className="partner-img"
-                alt="partner-img"
-              />
-            </li>
-            <li className="partner-item">
-              <img
-                src={partnerImg7}
-                className="partner-img"
-                alt="partner-img"
-              />
-            </li>
-            <li className="partner-item">
-              <img
-                src={partnerImg8}
-                className="partner-img"
-                alt="partner-img"
-              />
-            </li>
+
           </ul>
         </div>
       </div>

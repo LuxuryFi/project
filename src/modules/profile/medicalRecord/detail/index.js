@@ -47,7 +47,7 @@ export default function MedicalRecordDetail() {
           {/* Medical Record Detail */}
           <div className="medical-detail-container info-list">
             <div className="title-container">
-              <h3 className="title">Medical Record Information</h3>
+              <h3 className="title">Favorite</h3>
             </div>
             <div className="info-list">
               <div className="info-item">

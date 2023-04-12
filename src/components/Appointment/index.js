@@ -20,37 +20,37 @@ export default function Appointment() {
               <Animate.ScaleInCenter>
                 <li className="info-item">
                   <div className="info-num-container">
-                    <span className="num">2500</span>
+                    <span className="num">12500</span>
                     <span className="icon">&#43;</span>
                   </div>
-                  <p className="text">Care Locations</p>
+                  <p className="text">Books</p>
                 </li>
               </Animate.ScaleInCenter>
               <Animate.ScaleInCenter>
                 <li className="info-item">
                   <div className="info-num-container">
-                    <span className="num">2700</span>
+                    <span className="num">700</span>
                     <span className="icon">&#43;</span>
                   </div>
-                  <p className="text">Virtual Care Solutions</p>
+                  <p className="text">Series</p>
                 </li>
               </Animate.ScaleInCenter>
               <Animate.ScaleInCenter>
                 <li className="info-item">
                   <div className="info-num-container">
-                    <span className="num">99.6</span>
+                    <span className="num">100</span>
                     <span className="icon">%</span>
                   </div>
-                  <p className="text">Connections Success Rate</p>
+                  <p className="text">Success Order</p>
                 </li>
               </Animate.ScaleInCenter>
               <Animate.ScaleInCenter>
                 <li className="info-item">
                   <div className="info-num-container">
-                    <span className="num">30</span>
+                    <span className="num">25</span>
                     <span className="icon">&#43;</span>
                   </div>
-                  <p className="text">Award Winning</p>
+                  <p className="text">Supplier</p>
                 </li>
               </Animate.ScaleInCenter>
             </ul>

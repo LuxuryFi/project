@@ -1,5 +1,5 @@
 .type-writer-title {
-  @include styleText($color-blue-2, $fs-6 - 2, $fw-3);
+  @include styleText($color-tomato, $fs-6 - 2, $fw-3);
   text-transform: capitalize;
 
   .type-cursor {

@@ -19,7 +19,7 @@ const sidebarData = [
   },
   {
     icon: <BsJournalMedical className="icon" />,
-    text: 'Medical record',
+    text: 'Favorite',
     path: '/profile/medical-records',
   },
   {
@@ -29,7 +29,7 @@ const sidebarData = [
   },
   {
     icon: <AiOutlineSchedule className="icon" />,
-    text: 'Appointments',
+    text: 'Cart',
     path: '/profile/appointments',
   },
   {

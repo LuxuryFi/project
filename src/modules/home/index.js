@@ -137,8 +137,8 @@ export default function HomePage() {
               <Typewriter
                 options={{
                   strings: [
-                    "TeleHealth Services Rapid Response To Coronavirus Pandemic ",
-                    "The world’s most advanced equipment",
+                    "Bookstore. For your intelligence ",
+                    "Best online bookstore",
                   ],
                   autoStart: true,
                   loop: true,
