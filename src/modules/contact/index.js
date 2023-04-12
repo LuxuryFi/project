@@ -48,7 +48,7 @@ export default function Contact() {
               </div>
               <h3 className="title">Email Here</h3>
               <a className="link" href="mailto:medcares@gmail.com">
-                medcares@gmail.com
+                bookstore@gmail.com
               </a>
             </li>
 

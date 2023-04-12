@@ -48,12 +48,10 @@ export default function VerifyForm() {
               </Link>
             </h3>
             <p className="description">
-              Congratulations on registering with MedCares. To proceed with your
-              registration, please enter your unique Personal Identification
-              Number (PIN) that was emailed to you. If you have not received
+              Congratulations on registering with Bookstore. If you have not received
               this email, please contact us via Live Chat or at{' '}
               <a href="mailto:medcaresupport@gmail.com">
-                medcaresupport@gmail.com
+                bookstoresupport@gmail.com
               </a>
               .
             </p>

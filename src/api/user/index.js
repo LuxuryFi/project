@@ -2,18 +2,18 @@ import axiosClient from '../axios.config';
 
 const userAPI = {
   signIn(email, password) {
-    const url = `/patient/login`;
+    const url = `/project/customer/login`;
     return axiosClient.post(url, {
       email,
       password,
     });
   },
   signUp(newPatient) {
-    const url = `/patient/account/patient`;
+    const url = `/project/customer`;
     return axiosClient.post(url, newPatient);
   },
   getOne() {
-    const url = `/patient/account/patient`;
+    const url = `/project/customer`;
     return axiosClient.get(url);
   },
   verify(code) {
@@ -25,13 +25,13 @@ const userAPI = {
     return axiosClient.get(url);
   },
   update(newInformation) {
-    const url = `/patient/account/patient`;
+    const url = `/project/customer`;
     return axiosClient.put(url, newInformation, {
       headers: { 'Content-Type': 'multipart/form-data' },
     });
   },
   changePassword(password) {
-    const url = `/patient/account/patient/password`;
+    const url = `/project/customer/password`;
     return axiosClient.put(url, password);
   },
 };

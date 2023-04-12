@@ -7,10 +7,6 @@ import { MdPlace } from "react-icons/md";
 import { Link } from "react-router-dom";
 import { Image } from "antd";
 
-import doctor1 from "../../assets/img/doctor1.jpeg";
-import doctor2 from "../../assets/img/doctor2.jpeg";
-import doctor3 from "../../assets/img/doctor3.jpeg";
-
 export default function Footer() {
   return (
     <footer>
@@ -24,18 +20,7 @@ export default function Footer() {
                 eiusmod tempor incididunt ut labore et dolore aliqua.
               </p>
               <ul className="social-list">
-                <li className="social-item facebook">
-                  <FaFacebookF className="icon" />
-                </li>
-                <li className="social-item twitter">
-                  <AiOutlineTwitter className="icon" />
-                </li>
-                <li className="social-item pinterest">
-                  <FaPinterestP className="icon" />
-                </li>
-                <li className="social-item instagram">
-                  <FaInstagram className="icon" />
-                </li>
+
               </ul>
             </div>
             {/* <div className="footer-item">
@@ -77,27 +62,7 @@ export default function Footer() {
             <div className="footer-item">
               <h3 className="title">Contact</h3>
               <ul className="contact-list">
-                <li className="contact-item">
-                  <BsTelephoneFill className="icon" />
-                  <div className="info">
-                    <h5>Phone</h5>
-                    <a href="tel:+123456123">+123(456)123</a>
-                  </div>
-                </li>
-                <li className="contact-item">
-                  <TfiEmail className="icon" />
-                  <div className="info">
-                    <h5>Email</h5>
-                    <a href="mailto:healthcare@gmail">healthcare@gmail.com</a>
-                  </div>
-                </li>
-                <li className="contact-item">
-                  <MdPlace className="icon" />
-                  <div className="info">
-                    <h5>Place</h5>
-                    <p>Nam Tu Liem district, Ha Noi</p>
-                  </div>
-                </li>
+
               </ul>
             </div>
           </div>
@@ -110,9 +75,9 @@ export default function Footer() {
       </section>
       <section className="copyright-container">
         <p>
-          Copyright © 2022 MedCares. All Rights Reserved by{" "}
+          Copyright © 2023 Bookstore. All Rights Reserved by{" "}
           <Link to="#" className="link">
-            Vu Nam
+            Thanh Hien
           </Link>
         </p>
       </section>

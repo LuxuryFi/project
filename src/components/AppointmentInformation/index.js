@@ -19,7 +19,7 @@ export default function AppointmentInformation({ info }) {
         <h3 className="title">Service</h3>
         <p className="info">
           <span className="left">Type</span>
-          <span className="right">Medical examination at the hospital</span>
+          <span className="right">Bookstore</span>
         </p>
       </div>
 
@@ -91,8 +91,7 @@ export default function AppointmentInformation({ info }) {
         <p className="info">
           <span className="left">Promotion</span>
           <span className="right">
-            Discount 15% of consultation price applies to customers who make an
-            appointment for the first time via MedCares.net
+            Cheapest Book
           </span>
         </p>
       </div>
