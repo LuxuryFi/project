@@ -7,6 +7,7 @@ import articlesSlice from "./slices/articlesSlice";
 import paymentsSlice from "./slices/paymentsSlice";
 import medicalRecordsSclie from "./slices/medicalRecordsSclie";
 import booksSlice from "./slices/booksSlice";
+import cartSlice from "./slices/cartSlice";
 
 export default configureStore({
   reducer: {
@@ -18,6 +19,7 @@ export default configureStore({
     payments: paymentsSlice,
     medicalRecords: medicalRecordsSclie,
     books: booksSlice,
+    cart: cartSlice,
   },
   middleware: () =>
     getDefaultMiddleware({

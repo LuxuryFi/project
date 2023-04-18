@@ -1,16 +1,17 @@
-import { Routes, Route } from 'react-router-dom';
-import AboutPage from './pages/about';
-import Article from './pages/article';
-import ArticleDetailPage from './pages/article/detail';
-import ClientBookAppointmentPage from './pages/clientBookAppointment';
-import ContactPage from './pages/contact';
-import Home from './pages/home';
-import NoMatch from './pages/noMatch';
-import SignIn from './pages/signIn';
-import SignUp from './pages/signUp';
-import Verify from './pages/verify';
-import PrivateRoute from './routes/PrivateRoute';
-import appRoutes from './routes/routes';
+import { Routes, Route } from "react-router-dom";
+import AboutPage from "./pages/about";
+import Article from "./pages/article";
+import ArticleDetailPage from "./pages/article/detail";
+import ClientBookAppointmentPage from "./pages/clientBookAppointment";
+import ContactPage from "./pages/contact";
+import Home from "./pages/home";
+import NoMatch from "./pages/noMatch";
+import SignIn from "./pages/signIn";
+import SignUp from "./pages/signUp";
+import Verify from "./pages/verify";
+import PrivateRoute from "./routes/PrivateRoute";
+import appRoutes from "./routes/routes";
+import BookDetailPage from "./pages/bookStore/detail";
 
 function App() {
   const renderRoutes = (routes) =>
@@ -58,6 +59,7 @@ function App() {
           path="/articles/detail/:slug"
           element={<ArticleDetailPage />}
         ></Route>
+        <Route path="/books/:book_id" element={<BookDetailPage />}></Route>
         {renderRoutes(appRoutes)}
         <Route path="*" element={<NoMatch />}></Route>
       </Routes>

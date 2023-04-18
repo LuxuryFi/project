@@ -13,6 +13,10 @@ const bookAPI = {
     const url = `/project/product`;
     return axiosClient.get(url);
   },
+  getOne(book_id) {
+    const url = `/project/product/${book_id}`;
+    return axiosClient.get(url);
+  },
 };
 
 export default bookAPI;

@@ -1,10 +1,10 @@
-import React from 'react';
-import { Row, Col } from 'antd';
-import { IoCheckmarkDone } from 'react-icons/io5';
+import React from "react";
+import { Row, Col } from "antd";
+import { IoCheckmarkDone } from "react-icons/io5";
 
-import bgAbout from '../../assets/img/about-bg.PNG';
+import bgAbout from "../../assets/img/about-bg.png";
 
-import { Animate } from '../AnimateIn';
+import { Animate } from "../AnimateIn";
 
 export default function AboutUs() {
   return (
@@ -19,11 +19,14 @@ export default function AboutUs() {
           <Col className="right" xs={24} sm={24} md={12} lg={12} xl={12}>
             <Animate.FadeInDown>
               <h4 className="heading">About Us</h4>
-              <h3 className="title">
-                Best bookstore online
-              </h3>
+              <h3 className="title">Best bookstore online</h3>
               <p className="description">
-              bookstore.com accepts online orders and has home delivery. DO NOT support ordering and receiving directly bookstore.com accepts online orders and delivers to your door. DO NOT support ordering and receiving goods directly at the office as well as all bookstore systems nationwide at the office as well as all bookstore systems nationwide
+                bookstore.com accepts online orders and has home delivery. DO
+                NOT support ordering and receiving directly bookstore.com
+                accepts online orders and delivers to your door. DO NOT support
+                ordering and receiving goods directly at the office as well as
+                all bookstore systems nationwide at the office as well as all
+                bookstore systems nationwide
               </p>
             </Animate.FadeInDown>
             <ul className="about-features">

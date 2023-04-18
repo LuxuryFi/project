@@ -6,9 +6,19 @@ export const fetchTrending = createAsyncThunk(
   "booksSlice/fetchTrending",
   async () => {
     try {
-      console.log("Run on before");
       const result = await bookAPI.getTrending();
-      console.log("Run on after");
+      return result.data.data;
+    } catch (error) {
+      return Promise.reject(error.message);
+    }
+  }
+);
+
+export const fetchOneBook = createAsyncThunk(
+  "booksSlice/fetchOneBook",
+  async () => {
+    try {
+      const result = await bookAPI.getTrending();
       return result.data.data;
     } catch (error) {
       return Promise.reject(error.message);
@@ -47,6 +57,7 @@ const booksSlice = createSlice({
     trendingBooks: [],
     bestSellerBooks: [],
     newestBooks: [],
+    bookNeedUpdate: {},
     isLoading: false,
     hasError: false,
   },
@@ -105,6 +116,21 @@ const booksSlice = createSlice({
       state.isLoading = false;
       state.hasError = true;
     },
+    // Fetch One Book
+    [fetchOneBook.pending]: (state) => {
+      state.isLoading = true;
+      state.hasError = false;
+    },
+    [fetchOneBook.fulfilled]: (state, action) => {
+      state.bookNeedUpdate = action.payload;
+      state.isLoading = false;
+      state.hasError = false;
+    },
+    [fetchOneBook.rejected]: (state, action) => {
+      message.err(action.error.message, 3);
+      state.isLoading = false;
+      state.hasError = true;
+    },
   },
 });
 
@@ -114,6 +140,8 @@ export const selectTrendingBooks = (state) => state.books.trendingBooks;
 export const selectBestSellerBooks = (state) => state.books.bestSellerBooks;
 
 export const selectNewestBooks = (state) => state.books.newestBooks;
+
+export const selectBookNeedUpdate = (state) => state.books.bookNeedUpdate;
 
 export const selectBookIsLoading = (state) => state.books.isLoading;
 

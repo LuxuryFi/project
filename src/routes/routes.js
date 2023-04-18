@@ -7,17 +7,19 @@ import {
   PATH_PATIENT_PROFILE_PAYMENT_VIEW,
   PATH_PATIENT_PROFILE_MEDICAL_RECORDS,
   PATH_PATIENT_PROFILE_MEDICAL_RECORD_DETAIL,
-} from './path';
+  PATH_BOOK_DETAIL,
+} from "./path";
 
-import Profile from '../pages/profile';
-import UserInfo from '../pages/profile/userInfo';
-import Payment from '../pages/profile/payment';
-import PaymentDetailPage from '../pages/profile/payment/detail';
-import ChangePassword from '../pages/profile/changePassword';
-import Appointment from '../pages/profile/appointment';
-import NoMatch from '../pages/noMatch';
-import MedicalRecord from '../pages/profile/medicalRecord';
-import MedicalRecordDetailPage from '../pages/profile/medicalRecord/detail';
+import Profile from "../pages/profile";
+import UserInfo from "../pages/profile/userInfo";
+import Payment from "../pages/profile/payment";
+import PaymentDetailPage from "../pages/profile/payment/detail";
+import ChangePassword from "../pages/profile/changePassword";
+import Appointment from "../pages/profile/appointment";
+import NoMatch from "../pages/noMatch";
+import MedicalRecord from "../pages/profile/medicalRecord";
+import MedicalRecordDetailPage from "../pages/profile/medicalRecord/detail";
+import BookDetailPage from "../pages/bookStore/detail";
 
 const appRoutes = [
   {
@@ -49,7 +51,7 @@ const appRoutes = [
         element: <MedicalRecordDetailPage />,
       },
       {
-        path: '*',
+        path: "*",
         element: <NoMatch />,
       },
     ],
@@ -58,6 +60,10 @@ const appRoutes = [
     path: PATH_PATIENT_PROFILE_PAYMENT_VIEW,
     element: <PaymentDetailPage />,
   },
+  // {
+  //   path: PATH_BOOK_DETAIL,
+  //   element: <BookDetailPage />,
+  // },
 ];
 
 export default appRoutes;
