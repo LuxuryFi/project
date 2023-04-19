@@ -25,7 +25,7 @@ import Button from '../../../../components/Button';
 
 export default function PaymentDetail() {
   const dispatch = useDispatch();
-  const { payment_id } = useParams();
+  const { order_id } = useParams();
   const [subTotal, setSubTotal] = useState(0);
   const payment = useSelector(selectPaymentNeedUpdate);
   const details = useSelector(selectDetails);
@@ -47,9 +47,9 @@ export default function PaymentDetail() {
   }, [dispatch, payment.clinic_id]);
 
   useEffect(() => {
-    dispatch(fetchPayment(payment_id));
-    dispatch(fetchDetails(payment_id));
-  }, [dispatch, payment_id]);
+    dispatch(fetchPayment(order_id));
+    dispatch(fetchDetails(order_id));
+  }, [dispatch, order_id]);
 
   useEffect(() => {
     const calculateSubTotal = () => {
@@ -145,7 +145,7 @@ export default function PaymentDetail() {
                     >
                       <div className="info-item">
                         <span className="payment-title">Order: </span>
-                        <span className="payment-title-sub">#{payment_id}</span>
+                        <span className="payment-title-sub">#{order_id}</span>
                       </div>
                       <div className="info-item">
                         <span className="payment-title">Issued: </span>

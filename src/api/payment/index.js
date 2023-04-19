@@ -1,18 +1,18 @@
 import axiosClient from '../axios.config';
 
-const paymentAPI = {
+const orderAPI = {
   getAll() {
-    const url = `/patient/payment/`;
+    const url = `/project/order`;
     return axiosClient.get(url);
   },
-  getOne(payment_id) {
-    const url = `/patient/payment/patient/${payment_id}`;
+  getOne(order_id) {
+    const url = `/project/order/${order_id}`;
     return axiosClient.get(url);
   },
-  getDetails(payment_id) {
-    const url = `/patient/detail/payment/${payment_id}`;
+  getDetails(order_id) {
+    const url = `/project/detail/${order_id}`;
     return axiosClient.get(url);
   },
 };
 
-export default paymentAPI;
+export default orderAPI;

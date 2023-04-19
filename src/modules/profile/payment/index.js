@@ -25,14 +25,14 @@ export default function PaymentList() {
 
   const paymentColumns = [
     {
-      title: 'Invoice No',
+      title: 'Order ID',
       key: 'ID',
-      dataIndex: 'payment_id',
+      dataIndex: 'order_id',
     },
     {
-      title: 'Amount',
-      key: 'amount',
-      render: (record) => `$${record.amount ? record.amount : '200'}`,
+      title: 'User ID',
+      key: 'User_ID',
+      dataIndex: 'user_id',
     },
     {
       title: 'Created Date',
@@ -56,7 +56,7 @@ export default function PaymentList() {
       render: (record) => (
         <div className="button-container">
           <Link
-            to={`/payment/view/${record.payment_id}`}
+            to={`/payment/view/${record.order_id}`}
             className="button button--blue--dark square"
           >
             <ImEye className="icon" />
@@ -82,7 +82,7 @@ export default function PaymentList() {
       }}
       columns={paymentColumns}
       dataSource={payments}
-      rowKey={(record) => record.payment_id}
+      rowKey={(record) => record.order_id}
     />
   );
 }

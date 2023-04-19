@@ -1,12 +1,12 @@
 import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
 import { message } from "antd";
-import paymentAPI from "../../api/payment";
+import orderAPI from "../../api/payment";
 
 export const fetchPayments = createAsyncThunk(
   "paymentsSlice/fetchPayments",
   async () => {
     try {
-      const result = await paymentAPI.getAll();
+      const result = await orderAPI.getAll();
       return result.data.data;
     } catch (error) {
       return Promise.reject(error.message);
@@ -16,9 +16,9 @@ export const fetchPayments = createAsyncThunk(
 
 export const fetchPayment = createAsyncThunk(
   "paymentsSlice/fetchPayment",
-  async (payment_id) => {
+  async (order_id) => {
     try {
-      const result = await paymentAPI.getOne(payment_id);
+      const result = await orderAPI.getOne(order_id);
       return result.data.data;
     } catch (error) {
       return Promise.reject(error.message);
@@ -28,9 +28,9 @@ export const fetchPayment = createAsyncThunk(
 
 export const fetchDetails = createAsyncThunk(
   "paymentsSlice/fetchDetails",
-  async (payment_id) => {
+  async (order_id) => {
     try {
-      const result = await paymentAPI.getDetails(payment_id);
+      const result = await orderAPI.getDetails(order_id);
       return result.data.data;
     } catch (error) {
       return Promise.reject(error.message);
