@@ -1,6 +1,10 @@
 import axiosClient from "../axios.config";
 
 const bookAPI = {
+  getAll() {
+    const url = `/project/product`;
+    return axiosClient.get(url);
+  },
   getTrending() {
     const url = `/project/product`;
     return axiosClient.get(url);
@@ -15,6 +19,26 @@ const bookAPI = {
   },
   getOne(book_id) {
     const url = `/project/product/${book_id}`;
+    return axiosClient.get(url);
+  },
+  addWatch(book) {
+    const url = `/project/watch`;
+    return axiosClient.post(url, book);
+  },
+  addFavorite(book) {
+    const url = `/project/favorite`;
+    return axiosClient.post(url, book);
+  },
+  checkBook(book_id) {
+    const url = `/project/check/${book_id}`;
+    return axiosClient.get(url);
+  },
+  commentBook(data) {
+    const url = `/project/comment`;
+    return axiosClient.post(url, data);
+  },
+  getComment(book_id) {
+    const url = `/project/comment/${book_id}`;
     return axiosClient.get(url);
   },
 };

@@ -30,9 +30,7 @@ export default function Header() {
     <section className="header-container">
       <div className="header-content">
         <Row className="container-fluid">
-          <Col className="left" xs={0} sm={0} md={12} lg={12} xl={12}>
-
-          </Col>
+          <Col className="left" xs={0} sm={0} md={12} lg={12} xl={12}></Col>
           <Col className="right" xs={0} sm={0} md={12} lg={12} xl={12}>
             {isLogin() ? (
               <>
@@ -44,7 +42,7 @@ export default function Header() {
                     className="avatar"
                     src={
                       Object.keys(currentUser).length > 0
-                        ? currentUser.avatar[0].url
+                        ? `${process.env.REACT_APP_API_URL}/${currentUser.avatar[0].url}`
                         : ""
                     }
                     alt="avatar"

@@ -1,12 +1,13 @@
 import axiosClient from "../axios.config";
 
 const cartAPI = {
-  addItem(newItem) {
-    const url = `/project/product`;
-    return axiosClient.post(url, newItem);
+  getItem() {
+    const url = `/project/cart`;
+    return axiosClient.get(url);
   },
-  removeItem(item_id) {
-    // to do
+  removeItem(cart_id) {
+    const url = `/project/cart/${cart_id}`;
+    return axiosClient.delete(url);
   },
 };
 

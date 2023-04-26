@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import { Col, Row } from "antd";
 import { FaAngleLeft, FaAngleRight } from "react-icons/fa";
 import Typewriter from "typewriter-effect";
@@ -12,13 +12,16 @@ import { useDispatch, useSelector } from "react-redux";
 import Slider from "react-slick";
 import "slick-carousel/slick/slick.css";
 import {
+  fetchAll,
   fetchBestSeller,
   fetchNewest,
   fetchTrending,
   selectBestSellerBooks,
+  selectBooks,
   selectNewestBooks,
   selectTrendingBooks,
 } from "../../store/slices/booksSlice";
+import Pagination from "../../components/Pagination";
 
 const mockAPI = [
   {
@@ -74,7 +77,7 @@ const mockAPI = [
 const settings = {
   dots: true,
   arrows: false,
-  adaptiveHeight: true,
+  // adaptiveHeight: true,
   swipe: true,
   autoplay: false,
   infinite: true,
@@ -105,6 +108,9 @@ const settings = {
 
 export default function HomePage() {
   const dispatch = useDispatch();
+  const [page, setPage] = useState(1);
+  const books = useSelector(selectBooks);
+  const [cloneBooks, setCloneBooks] = useState([]);
   const trendingBooks = useSelector(selectTrendingBooks);
   const bestSellerBooks = useSelector(selectBestSellerBooks);
   const newestBooks = useSelector(selectNewestBooks);
@@ -119,10 +125,23 @@ export default function HomePage() {
     dispatch(fetchBestSeller());
   }, [dispatch]);
 
-  // // Fetch Newest
+  // Fetch Newest
   useEffect(() => {
     dispatch(fetchNewest());
   }, [dispatch]);
+
+  // Fetch All Products
+  useEffect(() => {
+    dispatch(fetchAll());
+  }, [dispatch]);
+
+  // Clone books
+  useEffect(() => {
+    const limit = 10;
+    let start = (page - 1) * limit;
+    let end = (page - 1) * limit + limit;
+    setCloneBooks(books.slice(start, end));
+  }, [books, page]);
 
   return (
     <div className="app-container">
@@ -164,22 +183,37 @@ export default function HomePage() {
           <h3 className="title">Discover Your Next Book</h3>
           <div className="discover-content">
             <h4 className="heading">New Releases</h4>
-            <Row className="discover-list" gutter={{ xl: 30, lg: 30 }}>
-              {mockAPI.map((item, index) => (
-                <Col xl={4} className="item" key={item.name + index}>
-                  <img alt="img" src={item.cover} className="cover" />
-                  <div className="bottom">
-                    <div className="info">
-                      <h3 className="name">{item.name}</h3>
-                      <p className="author">{item.author}</p>
+            <div className="grid-product">
+              {trendingBooks &&
+                trendingBooks.map((item, index) => (
+                  <Link
+                    to={`books/${item.product_id}`}
+                    className="item"
+                    key={item.created_date + index}
+                  >
+                    <img
+                      alt="img"
+                      src={
+                        item.document[0]
+                          ? `http://localhost:3001/documents/${item.document[0].document}`
+                          : mockAPI[3].cover
+                      }
+                      className="cover"
+                    />
+                    <div className="bottom">
+                      <div className="info">
+                        <h3 className="name">
+                          {item.title ? item.title : mockAPI[3].name}
+                        </h3>
+                        <p className="author">{mockAPI[3].author}</p>
+                      </div>
+                      <p className="prices">
+                        ${mockAPI[3].price_from} - ${mockAPI[3].price_to}
+                      </p>
                     </div>
-                    <p className="prices">
-                      ${item.price_from} - ${item.price_to}
-                    </p>
-                  </div>
-                </Col>
-              ))}
-            </Row>
+                  </Link>
+                ))}
+            </div>
           </div>
         </div>
       </section>
@@ -194,7 +228,11 @@ export default function HomePage() {
               <Slider {...settings}>
                 {trendingBooks &&
                   trendingBooks.map((item, index) => (
-                    <div className="item" key={item.name + index}>
+                    <Link
+                      to={`books/${item.product_id}`}
+                      className="item"
+                      key={item.name + index}
+                    >
                       <img
                         alt="img"
                         src={
@@ -215,7 +253,7 @@ export default function HomePage() {
                           ${mockAPI[3].price_from} - ${mockAPI[3].price_to}
                         </p>
                       </div>
-                    </div>
+                    </Link>
                   ))}
               </Slider>
             </div>
@@ -233,7 +271,11 @@ export default function HomePage() {
               <Slider {...settings}>
                 {bestSellerBooks &&
                   bestSellerBooks.map((item, index) => (
-                    <div className="item" key={item.name + index}>
+                    <Link
+                      to={`books/${item.product_id}`}
+                      className="item"
+                      key={item.name + index}
+                    >
                       <img
                         alt="img"
                         src={
@@ -254,7 +296,7 @@ export default function HomePage() {
                           ${mockAPI[3].price_from} - ${mockAPI[3].price_to}
                         </p>
                       </div>
-                    </div>
+                    </Link>
                   ))}
               </Slider>
             </div>
@@ -272,7 +314,11 @@ export default function HomePage() {
               <Slider {...settings}>
                 {newestBooks &&
                   newestBooks.map((item, index) => (
-                    <div className="item" key={item.name + index}>
+                    <Link
+                      to={`books/${item.product_id}`}
+                      className="item"
+                      key={item.name + index}
+                    >
                       <img
                         alt="img"
                         src={
@@ -293,11 +339,55 @@ export default function HomePage() {
                           ${mockAPI[3].price_from} - ${mockAPI[3].price_to}
                         </p>
                       </div>
-                    </div>
+                    </Link>
                   ))}
               </Slider>
             </div>
           </div>
+        </div>
+      </section>
+
+      {/* Display Grid Product */}
+      <section className="list-container container-space">
+        <div className="container-fluid grid-content">
+          <h3 className="title">Grid display books</h3>
+          <div className="grid-product">
+            {cloneBooks &&
+              cloneBooks.map((item, index) => (
+                <Link
+                  to={`books/${item.product_id}`}
+                  className="item"
+                  key={item.created_date + index}
+                >
+                  <img
+                    alt="img"
+                    src={
+                      item.document[0]
+                        ? `http://localhost:3001/documents/${item.document[0].document}`
+                        : mockAPI[3].cover
+                    }
+                    className="cover"
+                  />
+                  <div className="bottom">
+                    <div className="info">
+                      <h3 className="name">
+                        {item.title ? item.title : mockAPI[3].name}
+                      </h3>
+                      <p className="author">{mockAPI[3].author}</p>
+                    </div>
+                    <p className="prices">
+                      ${mockAPI[3].price_from} - ${mockAPI[3].price_to}
+                    </p>
+                  </div>
+                </Link>
+              ))}
+          </div>
+          <Pagination
+            limit={10}
+            setPage={setPage}
+            currentPage={page}
+            count={books.length}
+          />
         </div>
       </section>
 

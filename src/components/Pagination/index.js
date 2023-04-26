@@ -1,9 +1,9 @@
-import React from 'react';
-import { BiChevronLeft, BiChevronRight } from 'react-icons/bi';
+import React from "react";
+import { BiChevronLeft, BiChevronRight } from "react-icons/bi";
 
-import Button from '../Button';
+import Button from "../Button";
 
-export default function Pagination({ count, setPage, currentPage }) {
+export default function Pagination({ count, setPage, currentPage, limit }) {
   const handleClickPage = (page) => {
     setPage(page);
   };
@@ -27,14 +27,14 @@ export default function Pagination({ count, setPage, currentPage }) {
         <BiChevronLeft className="icon" />
       </Button>
       {count &&
-        Array(Math.ceil(count / 5))
+        Array(Math.ceil(count / limit))
           .fill(0)
           .map((item, index) => (
             <Button
               onClick={() => handleClickPage(index + 1)}
               key={index}
               className={`button square button--light ${
-                currentPage === index + 1 ? 'active' : ''
+                currentPage === index + 1 ? "active" : ""
               }`}
             >
               <span>{index + 1}</span>
