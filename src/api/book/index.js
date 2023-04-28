@@ -37,10 +37,6 @@ const bookAPI = {
     const url = `/project/comment`;
     return axiosClient.post(url, data);
   },
-  getComment(book_id) {
-    const url = `/project/comment/${book_id}`;
-    return axiosClient.get(url);
-  },
 };
 
 export default bookAPI;

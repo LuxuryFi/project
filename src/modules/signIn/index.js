@@ -17,7 +17,7 @@ export default function SigninForm() {
   const isLoading = useSelector(selectUserIsLoading);
 
   useEffect(() => {
-    if (JSON.parse(localStorage.getItem("currentPatient"))) {
+    if (JSON.parse(localStorage.getItem("currentUser"))) {
       navigate("/");
     }
   }, [navigate]);

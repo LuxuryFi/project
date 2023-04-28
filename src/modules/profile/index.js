@@ -1,14 +1,14 @@
-import { Col, Row } from 'antd';
-import React from 'react';
-import { useSelector } from 'react-redux';
-import { NavLink, Outlet } from 'react-router-dom';
-import ScrollToTop from 'react-scroll-to-top';
+import { Col, Row } from "antd";
+import React from "react";
+import { useSelector } from "react-redux";
+import { NavLink, Outlet } from "react-router-dom";
+import ScrollToTop from "react-scroll-to-top";
 
-import Footer from '../../components/Footer';
-import Header from '../../components/Header';
-import Navigation from '../../components/Navigation';
-import { selectCurrentUser } from '../../store/slices/usersSlice';
-import sidebarData from './sidebarData';
+import Footer from "../../components/Footer";
+import Header from "../../components/Header";
+import Navigation from "../../components/Navigation";
+import { selectCurrentUser } from "../../store/slices/usersSlice";
+import sidebarData from "./sidebarData";
 
 export default function MyProfile() {
   const currentUser = useSelector(selectCurrentUser);
@@ -28,14 +28,14 @@ export default function MyProfile() {
                     className="avatar"
                     src={
                       Object.keys(currentUser).length > 0
-                        ? currentUser.avatar[0].url
-                        : ''
+                        ? `${process.env.REACT_APP_API_URL}/${currentUser.avatar[0].url}`
+                        : ""
                     }
                     alt="avatar"
                   />
-                  <h3 className="name">{currentUser.full_name}</h3>
-                  <h5 className="category">
-                  </h5>
+                  <h3 className="name">
+                    {currentUser.first_name} {currentUser.last_name}
+                  </h3>
                 </div>
                 <ul className="sidebar-list">
                   {sidebarData.map((data, index) => (

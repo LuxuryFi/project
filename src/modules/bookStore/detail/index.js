@@ -6,6 +6,7 @@ import {
   AiOutlineMinus,
   AiOutlinePlus,
   AiOutlineHeart,
+  AiFillHeart,
   AiOutlineShoppingCart,
 } from "react-icons/ai";
 import moment from "moment";
@@ -20,11 +21,14 @@ import {
   checkBook,
   commentBook,
   fetchComment,
+  selectBookFavorite,
   selectBookNeedUpdate,
 } from "../../../store/slices/booksSlice";
 import { fetchOneBook } from "../../../store/slices/booksSlice";
 import { selectCurrentUser } from "../../../store/slices/usersSlice";
 import TextArea from "antd/lib/input/TextArea";
+import { isLogin } from "../../../helpers/isLogin";
+import { addItemToCart } from "../../../store/slices/cartSlice";
 
 export default function BookDetail() {
   const dispatch = useDispatch();
@@ -32,13 +36,9 @@ export default function BookDetail() {
   const [formComment] = Form.useForm();
   const [formAddToCart] = Form.useForm();
   const currentUser = useSelector(selectCurrentUser);
+  const favorites = useSelector(selectBookFavorite);
   const bookNeedUpdate = useSelector(selectBookNeedUpdate);
   const [quantity, setQuantity] = useState(0);
-
-  // Fetch comment
-  useEffect(() => {
-    dispatch(fetchComment(book_id));
-  }, [book_id, dispatch]);
 
   // Fill value to input quantity
   useEffect(() => {
@@ -54,10 +54,10 @@ export default function BookDetail() {
     }
   }, [book_id, dispatch]);
 
-  // Check favorite
-  useEffect(() => {
-    dispatch(checkBook(book_id));
-  }, [book_id, dispatch]);
+  // Check favorite and watch
+  // useEffect(() => {
+  //   if (isLogin()) dispatch(checkBook(book_id));
+  // }, [book_id, dispatch]);
 
   const handleClickFavorite = () => {
     dispatch(addFavorite(book_id));
@@ -78,7 +78,14 @@ export default function BookDetail() {
     setQuantity((prev) => prev + 1);
   };
 
-  const handleAddToCart = () => {};
+  const handleAddToCart = () => {
+    const data = {
+      amount: quantity,
+      product_id: bookNeedUpdate.product_id,
+      user_id: currentUser.user_id,
+    };
+    dispatch(addItemToCart(data));
+  };
 
   const handleFinishComment = (values) => {
     const data = {
@@ -110,7 +117,7 @@ export default function BookDetail() {
                       <img
                         key={src.document + index}
                         className="image-item"
-                        alt="remaing img current"
+                        alt="remain img current"
                         src={`${process.env.REACT_APP_API_URL}/documents/${src.document}`}
                       />
                     ))}
@@ -144,10 +151,17 @@ export default function BookDetail() {
                       <span className="text">Sold</span>
                     </div>
                     <div className="favorite">
-                      <AiOutlineHeart
-                        onClick={handleClickFavorite}
-                        className="icon"
-                      />
+                      {favorites.includes(bookNeedUpdate.book_id) ? (
+                        <AiFillHeart
+                          className="icon"
+                          onClick={handleClickFavorite}
+                        />
+                      ) : (
+                        <AiOutlineHeart
+                          onClick={handleClickFavorite}
+                          className="icon"
+                        />
+                      )}
                     </div>
                   </div>
                   <div className="price-container">
@@ -181,7 +195,7 @@ export default function BookDetail() {
                         <span>Notify me when the goods arrive</span>
                       </Button>
                       <h4 className="quantity-amount">
-                        {bookNeedUpdate.amount} piece available
+                        {bookNeedUpdate.amount ?? 0} piece available
                       </h4>
                     </div>
                   ) : (
@@ -208,6 +222,8 @@ export default function BookDetail() {
                                 className="quantity-input-container"
                               >
                                 <InputNumber
+                                  min={0}
+                                  max={bookNeedUpdate.amount}
                                   controls={false}
                                   className="input-quantity"
                                 />
@@ -272,7 +288,7 @@ export default function BookDetail() {
                       <img
                         className="avatar"
                         alt="avatar"
-                        src="https://www.pumpkin.care/wp-content/uploads/2020/08/Cat-Memes-2020.jpg"
+                        src={`${process.env.REACT_APP_API_URL}/${currentUser.avatar[0].url}`}
                       />
                     </div>
                     <div className="right">
@@ -316,7 +332,7 @@ export default function BookDetail() {
                       >
                         <img
                           alt="avatar"
-                          src={`${process.env.REACT_APP_API_URL}/documents/${item.avatar}`}
+                          src={`${process.env.REACT_APP_API_URL}/${item.avatar}`}
                           className="avatar"
                         ></img>
                         <div className="comment-content">

@@ -1,4 +1,4 @@
-import axiosClient from '../axios.config';
+import axiosClient from "../axios.config";
 
 const userAPI = {
   signIn(email, password) {
@@ -12,8 +12,8 @@ const userAPI = {
     const url = `/project/customer`;
     return axiosClient.post(url, newPatient);
   },
-  getOne() {
-    const url = `/project/customer`;
+  getOne(email) {
+    const url = `/project/customer/${email}`;
     return axiosClient.get(url);
   },
   verify(code) {
@@ -27,7 +27,7 @@ const userAPI = {
   update(newInformation) {
     const url = `/project/customer`;
     return axiosClient.put(url, newInformation, {
-      headers: { 'Content-Type': 'multipart/form-data' },
+      headers: { "Content-Type": "multipart/form-data" },
     });
   },
   changePassword(password) {

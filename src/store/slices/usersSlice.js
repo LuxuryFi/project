@@ -14,12 +14,12 @@ export const signIn = createAsyncThunk(
       localStorage.setItem("accessToken", accessToken);
 
       // Get information of current user after getting token
-      const currentPatient = await userAPI.getOne();
+      const currentUser = await userAPI.getOne(email);
       localStorage.setItem(
-        "currentPatient",
-        JSON.stringify(currentPatient.data.data)
+        "currentUser",
+        JSON.stringify(currentUser.data.data)
       );
-      return currentPatient.data.data;
+      return currentUser.data.data;
     } catch (error) {
       return Promise.reject(error.message);
     }
@@ -82,7 +82,9 @@ export const getIdentity = createAsyncThunk(
   "usersSlice/getIdentity",
   async () => {
     try {
-      const result = await userAPI.getOne();
+      const result = await userAPI.getOne(
+        JSON.parse(localStorage.getItem("currentUser")).email
+      );
       return result.data.data;
     } catch (error) {
       return Promise.reject();
@@ -128,7 +130,9 @@ const usersSlice = createSlice({
     [signIn.fulfilled]: (state, action) => {
       message.success("Signed In successfully!", 3);
       state.userNeedUpdate = action.payload;
-      window.location.href = "/";
+      setTimeout(() => {
+        window.location.href = "/";
+      }, [1000]);
       state.isLoading = false;
       state.hasError = false;
     },

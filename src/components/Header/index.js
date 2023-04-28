@@ -20,11 +20,11 @@ export default function Header() {
   const dispatch = useDispatch();
   const currentUser = useSelector(selectCurrentUser);
 
-  // useEffect(() => {
-  //   if (Object.keys(currentUser).length === 0) {
-  //     dispatch(getIdentity());
-  //   }
-  // }, [dispatch, currentUser]);
+  useEffect(() => {
+    if (isLogin() && Object.keys(currentUser).length === 0) {
+      dispatch(getIdentity());
+    }
+  }, [dispatch, currentUser]);
 
   return (
     <section className="header-container">
@@ -47,11 +47,11 @@ export default function Header() {
                     }
                     alt="avatar"
                   />
-                  Hello, {currentUser.full_name}
+                  Hello, {currentUser.last_name}
                 </Link>
                 <Button
                   onClick={() => {
-                    localStorage.removeItem("currentPatient");
+                    localStorage.removeItem("currentUser");
                     localStorage.removeItem("accessToken");
                     window.location.href = "/signin";
                   }}

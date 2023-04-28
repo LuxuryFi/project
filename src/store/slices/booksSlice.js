@@ -112,7 +112,6 @@ export const commentBook = createAsyncThunk(
   "booksSlice/commentBook",
   async (data) => {
     try {
-      const { user_id, comment, product_id } = data;
       const result = await bookAPI.commentBook(data);
       return result.data.data;
     } catch (error) {
@@ -158,11 +157,6 @@ const booksSlice = createSlice({
       let arr = [
         ...action.payload,
         ...action.payload.sort(() => Math.random() - 0.5),
-        ...action.payload.sort(() => Math.random() - 0.5),
-        ...action.payload.sort(() => Math.random() - 0.5),
-        ...action.payload.sort(() => Math.random() - 0.5),
-        ...action.payload.sort(() => Math.random() - 0.5),
-        ...action.payload.sort(() => Math.random() - 0.5),
       ];
       state.books = arr;
       state.isLoading = false;
@@ -194,11 +188,7 @@ const booksSlice = createSlice({
       state.hasError = false;
     },
     [fetchBestSeller.fulfilled]: (state, action) => {
-      state.bestSellerBooks = [
-        ...action.payload,
-        ...action.payload,
-        ...action.payload,
-      ];
+      state.bestSellerBooks = [...action.payload];
       state.isLoading = false;
       state.hasError = false;
     },
@@ -213,11 +203,7 @@ const booksSlice = createSlice({
       state.hasError = false;
     },
     [fetchNewest.fulfilled]: (state, action) => {
-      state.newestBooks = [
-        ...action.payload,
-        ...action.payload,
-        ...action.payload,
-      ];
+      state.newestBooks = [...action.payload];
       state.isLoading = false;
       state.hasError = false;
     },
@@ -311,26 +297,18 @@ const booksSlice = createSlice({
       state.hasError = false;
     },
     [commentBook.fulfilled]: (state, action) => {
+      const currentUser = JSON.parse(localStorage.getItem("currentUser"));
+      state.bookNeedUpdate.comments.unshift({
+        ...action.payload,
+        avatar: currentUser.avatar,
+        full_name: currentUser.first_name + " " + currentUser.last_name,
+      });
+
       message.success("Added comment to this item successfully");
       state.isLoading = false;
       state.hasError = false;
     },
     [commentBook.rejected]: (state, action) => {
-      message.err(action.error.message, 3);
-      state.isLoading = false;
-      state.hasError = true;
-    },
-    // Fetch Comment
-    [fetchComment.pending]: (state) => {
-      state.isLoading = true;
-      state.hasError = false;
-    },
-    [fetchComment.fulfilled]: (state, action) => {
-      state.bookNeedUpdate.comment = action.payload;
-      state.isLoading = false;
-      state.hasError = false;
-    },
-    [fetchComment.rejected]: (state, action) => {
       message.err(action.error.message, 3);
       state.isLoading = false;
       state.hasError = true;

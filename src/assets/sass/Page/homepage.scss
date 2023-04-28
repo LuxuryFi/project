@@ -263,6 +263,7 @@
     display: grid;
     grid-template-columns: repeat(5, 1fr);
     gap: 10px;
+    row-gap: 30px;
     .item {
       text-align: center;
       .cover {

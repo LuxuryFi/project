@@ -212,5 +212,52 @@
         }
       }
     }
+
+    // Cart
+    .cart-container {
+      min-height: 300px;
+      .cart-item {
+        margin-bottom: $mg-2;
+        background-color: $color-white-0;
+        border: 1px solid $color-line-0;
+        border-radius: $border-radius-2;
+        margin-bottom: $mg-2;
+        padding: $pd-3;
+        width: 100%;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        gap: 20px;
+        .img {
+          width: 80px;
+          aspect-ratio: 1 / 1;
+        }
+        .quantity-container {
+          display: flex;
+          align-items: center;
+          .button--light {
+            margin-right: 0;
+            height: 100%;
+            border-radius: 0;
+            display: block;
+            .icon {
+              margin-left: 0;
+            }
+          }
+          .quantity-input-container {
+            margin-bottom: 0;
+            height: 100%;
+            .input-quantity {
+              .ant-input-number-input {
+                text-align: center;
+              }
+            }
+          }
+        }
+      }
+      .button--main--book {
+        margin-left: auto;
+      }
+    }
   }
 }

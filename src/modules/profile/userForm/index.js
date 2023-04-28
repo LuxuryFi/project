@@ -1,9 +1,9 @@
-import React, { useState } from 'react';
-import { Form, Select, Input, Radio, Row, Col, Upload, DatePicker } from 'antd';
-import { useDispatch, useSelector } from 'react-redux';
-import { PlusOutlined } from '@ant-design/icons';
-import { IoClose } from 'react-icons/io5';
-import moment from 'moment';
+import React, { useState } from "react";
+import { Form, Select, Input, Radio, Row, Col, Upload, DatePicker } from "antd";
+import { useDispatch, useSelector } from "react-redux";
+import { PlusOutlined } from "@ant-design/icons";
+import { IoClose } from "react-icons/io5";
+import moment from "moment";
 
 import {
   changeUserNeedUpdateAvatar,
@@ -12,11 +12,11 @@ import {
   selectUserIsLoading,
   selectUserNeedUpdate,
   updateInformation,
-} from '../../../store/slices/usersSlice';
-import Modal from '../../../components/Modal';
-import Button from '../../../components/Button';
-import Spinner from '../../../components/Spinner';
-import { useEffect } from 'react';
+} from "../../../store/slices/usersSlice";
+import Modal from "../../../components/Modal";
+import Button from "../../../components/Button";
+import Spinner from "../../../components/Spinner";
+import { useEffect } from "react";
 
 const formItemLayout = {
   labelCol: {
@@ -60,15 +60,15 @@ export default function UserForm() {
   const userNeedUpdate = useSelector(selectUserNeedUpdate);
   const [preview, setPreview] = useState({
     isOpen: false,
-    name: '',
-    src: '',
+    name: "",
+    src: "",
   });
 
   useEffect(() => {
     if (Object.keys(userNeedUpdate).length > 0) {
       form.setFieldsValue({
         email: userNeedUpdate.email,
-        blood: 'AB+',
+        blood: "AB+",
         first_name: userNeedUpdate.first_name,
         last_name: userNeedUpdate.last_name,
         phone: userNeedUpdate.phone,
@@ -98,21 +98,21 @@ export default function UserForm() {
 
   const handleSubmit = (values) => {
     const formData = new FormData();
-    formData.append('first_name', values.first_name);
-    formData.append('last_name', values.last_name);
-    formData.append('full_name', `${values.first_name} ${values.last_name}`);
-    formData.append('email', values.email);
-    formData.append('phone', `${values.phone}`);
-    formData.append('gender', values.gender);
-    formData.append('state', values.state);
-    formData.append('city', values.city);
-    formData.append('address', values.address);
-    formData.append('date_of_birth', values.date_of_birth.format('YYYY-MM-DD'));
+    formData.append("first_name", values.first_name);
+    formData.append("last_name", values.last_name);
+    formData.append("full_name", `${values.first_name} ${values.last_name}`);
+    formData.append("email", values.email);
+    formData.append("phone", `${values.phone}`);
+    formData.append("gender", values.gender);
+    formData.append("state", values.state);
+    formData.append("city", values.city);
+    formData.append("address", values.address);
+    formData.append("date_of_birth", values.date_of_birth.format("YYYY-MM-DD"));
     if (oldImage) {
-      formData.append('old_image', oldImage);
-      formData.append('avatar', avatar[0]);
+      formData.append("old_image", oldImage);
+      formData.append("avatar", avatar[0]);
     }
-    formData.append('patient_id', userNeedUpdate.patient_id);
+    formData.append("patient_id", userNeedUpdate.patient_id);
 
     dispatch(updateInformation(formData));
     dispatch(getIdentity());
@@ -137,7 +137,7 @@ export default function UserForm() {
             beforeUpload={(file) => {
               // Fake sending document to action props succesfully
               setOldImage(true);
-              file.status = 'done';
+              file.status = "done";
               const reader = new FileReader();
               reader.readAsDataURL(file);
               reader.onload = (event) => {
@@ -172,11 +172,11 @@ export default function UserForm() {
               rules={[
                 {
                   required: true,
-                  message: 'Please enter your email!',
+                  message: "Please enter your email!",
                 },
                 {
-                  type: 'email',
-                  message: 'The input is not valid E-mail!',
+                  type: "email",
+                  message: "The input is not valid E-mail!",
                 },
               ]}
               label="Email"
@@ -191,7 +191,7 @@ export default function UserForm() {
               rules={[
                 {
                   required: true,
-                  message: 'Please enter your first name!',
+                  message: "Please enter your first name!",
                 },
               ]}
               label="First Name"
@@ -206,7 +206,7 @@ export default function UserForm() {
               rules={[
                 {
                   required: true,
-                  message: 'Please enter your last name!',
+                  message: "Please enter your last name!",
                 },
               ]}
               label="Last Name"
@@ -221,7 +221,7 @@ export default function UserForm() {
               rules={[
                 {
                   required: true,
-                  message: 'Please enter your phone!',
+                  message: "Please enter your phone!",
                 },
               ]}
               label="Phone"
@@ -233,19 +233,18 @@ export default function UserForm() {
           <Col className="right" sm={24} md={12} lg={12} xl={12} xll={12}>
             {/* Blood group */}
 
-
             {/* Date of birth */}
             <Form.Item
               className="form-input-group"
               label="Date of birth"
               name="date_of_birth"
               rules={[
-                { required: true, message: 'Please enter your date of brith' },
+                { required: true, message: "Please enter your date of brith" },
               ]}
             >
               <DatePicker
                 className="input"
-                style={{ padding: '12px 20px' }}
+                style={{ padding: "12px 20px" }}
                 allowClear={false}
                 format="DD-MM-YYYY"
               />
@@ -259,7 +258,7 @@ export default function UserForm() {
               rules={[
                 {
                   required: true,
-                  message: 'Please select your gender!',
+                  message: "Please select your gender!",
                 },
               ]}
             >
@@ -276,7 +275,7 @@ export default function UserForm() {
               rules={[
                 {
                   required: true,
-                  message: 'Please enter your state!',
+                  message: "Please enter your state!",
                 },
               ]}
               label="State"
@@ -293,7 +292,7 @@ export default function UserForm() {
           rules={[
             {
               required: true,
-              message: 'Please enter your city!',
+              message: "Please enter your city!",
             },
           ]}
           label="City"
@@ -308,7 +307,7 @@ export default function UserForm() {
           rules={[
             {
               required: true,
-              message: 'Please enter your address!',
+              message: "Please enter your address!",
             },
           ]}
           label="Address"
@@ -319,12 +318,12 @@ export default function UserForm() {
 
         <Form.Item>
           <Button type="submit" className="button button--blue--dark">
-            <span>{isLoading ? <Spinner /> : 'Save Changes'}</span>
+            <span>{isLoading ? <Spinner /> : "Save Changes"}</span>
           </Button>
         </Form.Item>
       </Form>
       <Modal
-        className={`content ${preview.isOpen ? 'active' : ''}`}
+        className={`content ${preview.isOpen ? "active" : ""}`}
         isOpen={preview.isOpen}
         renderBody={() => (
           <div className="content content-preview">

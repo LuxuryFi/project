@@ -2,18 +2,26 @@ import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
 import { message } from "antd";
 import cartAPI from "../../api/cart";
 
-export const addItem = createAsyncThunk(
-  "cartSlice/addItem",
+export const addItemToCart = createAsyncThunk(
+  "cartSlice/addItemToCart",
   async (newItem) => {
     try {
-      console.log(newItem);
-      const result = await cartAPI.addItem();
+      const result = await cartAPI.addItem(newItem);
       return result.data.data;
     } catch (error) {
       return Promise.reject(error.message);
     }
   }
 );
+
+export const fetchCart = createAsyncThunk("cartSlice/fetchCart", async () => {
+  try {
+    const result = await cartAPI.fetchCart();
+    return result.data.data;
+  } catch (error) {
+    return Promise.reject(error.message);
+  }
+});
 
 // Reducer
 const cartSlice = createSlice({
@@ -26,16 +34,32 @@ const cartSlice = createSlice({
   reducers: {},
   extraReducers: {
     // Add item
-    [addItem.pending]: (state) => {
+    [addItemToCart.pending]: (state) => {
       state.isLoading = true;
       state.hasError = false;
     },
-    [addItem.fulfilled]: (state, action) => {
+    [addItemToCart.fulfilled]: (state, action) => {
+      state.items = action.payload;
+      message.success("Added item to cart successfully!", 3);
+      state.isLoading = false;
+      state.hasError = false;
+    },
+    [addItemToCart.rejected]: (state, action) => {
+      message.err(action.error.message, 3);
+      state.isLoading = false;
+      state.hasError = true;
+    },
+    // Fetch Cart
+    [fetchCart.pending]: (state) => {
+      state.isLoading = true;
+      state.hasError = false;
+    },
+    [fetchCart.fulfilled]: (state, action) => {
       state.items = action.payload;
       state.isLoading = false;
       state.hasError = false;
     },
-    [addItem.rejected]: (state, action) => {
+    [fetchCart.rejected]: (state, action) => {
       message.err(action.error.message, 3);
       state.isLoading = false;
       state.hasError = true;

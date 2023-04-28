@@ -75,6 +75,26 @@
     border: none;
   }
 
+  &.button--text--red {
+    @include styleButton(#d0011b, transparent, none, $fs-0, $fw-1, 0, 0);
+    border: none;
+  }
+
+  &.button--main--book {
+    background-color: #d0011b;
+    color: #fff;
+    padding: 14px 20px;
+    border-radius: 0;
+    border: 1px solid #d36a68;
+    &:hover {
+      background-color: #d36a68;
+    }
+    .icon {
+      margin-left: 0;
+      margin-right: 5px;
+    }
+  }
+
   .icon {
     margin-left: $mg-4;
   }
