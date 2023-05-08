@@ -9,6 +9,7 @@ import {
   PATH_PATIENT_PROFILE_MEDICAL_RECORD_DETAIL,
   PATH_BOOK_DETAIL,
   PATH_PATIENT_PROFILE_CART,
+  PATH_PATIENT_PROFILE_PAYMENT_CHECKOUT,
 } from "./path";
 
 import Profile from "../pages/profile";
@@ -21,6 +22,7 @@ import NoMatch from "../pages/noMatch";
 import MedicalRecord from "../pages/profile/medicalRecord";
 import MedicalRecordDetailPage from "../pages/profile/medicalRecord/detail";
 import BookDetailPage from "../pages/bookStore/detail";
+import CheckoutPage from "../pages/profile/payment/checkout";
 import CartPage from "../pages/profile/cart";
 
 const appRoutes = [
@@ -65,6 +67,10 @@ const appRoutes = [
   {
     path: PATH_PATIENT_PROFILE_PAYMENT_VIEW,
     element: <PaymentDetailPage />,
+  },
+  {
+    path: PATH_PATIENT_PROFILE_PAYMENT_CHECKOUT,
+    element: <CheckoutPage />,
   },
   // {
   //   path: PATH_BOOK_DETAIL,

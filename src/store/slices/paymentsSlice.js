@@ -38,6 +38,20 @@ export const fetchDetails = createAsyncThunk(
   }
 );
 
+// Book store
+
+export const createPayment = createAsyncThunk(
+  "paymentsSlice/createPayment",
+  async () => {
+    try {
+      const result = await orderAPI.addPayment();
+      return result.data.data;
+    } catch (error) {
+      return Promise.reject(error.message);
+    }
+  }
+);
+
 // Reducer
 const paymentsSlice = createSlice({
   name: "paymentsSlice",
@@ -91,6 +105,26 @@ const paymentsSlice = createSlice({
       state.hasError = false;
     },
     [fetchDetails.rejected]: (state, action) => {
+      message.error(action.error.message, 3);
+      state.isLoading = false;
+      state.hasError = true;
+    },
+    // Book Store
+    // Add payment
+    [createPayment.pending]: (state) => {
+      state.isLoading = true;
+      state.hasError = false;
+    },
+    [createPayment.fulfilled]: (state, action) => {
+      state.payments = action.payload;
+      message.success("Added payment successfully!", 3);
+      // setTimeout(() => {
+      //   window.location.href = "";
+      // }, 1000)
+      state.isLoading = false;
+      state.hasError = false;
+    },
+    [createPayment.rejected]: (state, action) => {
       message.error(action.error.message, 3);
       state.isLoading = false;
       state.hasError = true;

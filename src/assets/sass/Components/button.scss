@@ -11,9 +11,7 @@
   transition: 0.25s ease;
   display: flex;
   align-items: center;
-  &.square {
-    border-radius: $border-radius-3;
-  }
+
   &.button--light {
     @include styleButton(
       $color-black-0,
@@ -95,6 +93,23 @@
     }
   }
 
+  &.button--light--book {
+    @include styleButton(
+      $color-black-0,
+      $color-white-0,
+      $color-black-0,
+      $fs-0,
+      $fw-1,
+      $pd-1 - 1,
+      $pd-3
+    );
+    &:hover {
+      @include hoverButton($color-white-0, $color-tomato, $color-tomato);
+    }
+    .icon {
+    }
+  }
+
   .icon {
     margin-left: $mg-4;
   }
@@ -110,6 +125,14 @@
       cursor: default;
       color: $color-gray-1;
     }
+  }
+
+  &.square {
+    border-radius: $border-radius-3;
+  }
+
+  &.rounded {
+    border-radius: $border-radius-4;
   }
 }
 
@@ -128,6 +151,7 @@
 
 .payment-detail-content {
   .checkout-button {
+    display: inline-block;
     margin-top: 40px;
     margin-left: auto;
   }

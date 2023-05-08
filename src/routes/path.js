@@ -12,3 +12,5 @@ export const PATH_PATIENT_PROFILE_CHANGE_PASSWORD = "change-password";
 
 // Book Store
 export const PATH_BOOK_DETAIL = "/books/:book_id";
+export const PATH_PATIENT_PROFILE_PAYMENT_CHECKOUT =
+  "/payment/checkout/:payment_id";

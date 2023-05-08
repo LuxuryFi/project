@@ -109,18 +109,25 @@ export default function BookDetail() {
                 <div className="image-container">
                   <img
                     className="image-current"
-                    src={`${process.env.REACT_APP_API_URL}/documents/${bookNeedUpdate.documents[0].document}`}
+                    src={
+                      bookNeedUpdate.documents &&
+                      bookNeedUpdate.documents.length > 0
+                        ? `${process.env.REACT_APP_API_URL}/documents/${bookNeedUpdate.documents[0].document}`
+                        : "https://img.freepik.com/free-vector/blank-book-cover-white-vector-illustration_1284-41903.jpg?w=360"
+                    }
                     alt="current product"
                   />
                   <div className="image-list">
-                    {bookNeedUpdate.documents.map((src, index) => (
-                      <img
-                        key={src.document + index}
-                        className="image-item"
-                        alt="remain img current"
-                        src={`${process.env.REACT_APP_API_URL}/documents/${src.document}`}
-                      />
-                    ))}
+                    {bookNeedUpdate.documents &&
+                      bookNeedUpdate.documents.length > 0 &&
+                      bookNeedUpdate.documents.map((src, index) => (
+                        <img
+                          key={src.document + index}
+                          className="image-item"
+                          alt="remain img current"
+                          src={`${process.env.REACT_APP_API_URL}/documents/${src.document}`}
+                        />
+                      ))}
                   </div>
                 </div>
               </Col>

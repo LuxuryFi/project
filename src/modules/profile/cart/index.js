@@ -1,16 +1,23 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import {
+  deleteItemInCart,
   fetchCart,
   selectAllItemInCart,
   updateItemInCart,
 } from "../../../store/slices/cartSlice";
-import { Form, InputNumber } from "antd";
+import { InputNumber } from "antd";
+import Modal from "../../../components/Modal";
+import { IoIosCloseCircleOutline } from "react-icons/io";
+import { IoClose } from "react-icons/io5";
 import Button from "../../../components/Button";
 import { AiOutlineMinus, AiOutlinePlus } from "react-icons/ai";
+import { createPayment } from "../../../store/slices/paymentsSlice";
 
 export default function Cart() {
   const dispatch = useDispatch();
+  const [isShowDelete, setIsShowDelete] = useState(false);
+  const [productSelected, setProductSelected] = useState({});
   const cart = useSelector(selectAllItemInCart);
 
   useEffect(() => {
@@ -26,7 +33,39 @@ export default function Cart() {
     );
   };
 
-  const handleCreatePayment = () => {};
+  const handleCreatePayment = () => {
+    dispatch(createPayment());
+  };
+
+  const handleDeleteProduct = () => {
+    dispatch(deleteItemInCart(productSelected.cart_id));
+    setIsShowDelete(false);
+  };
+
+  const renderBody = () => (
+    <div className="content content--confirm">
+      <div className="close-btn" onClick={() => setIsShowDelete(false)}>
+        <IoClose className="close-icon" />
+      </div>
+      <IoIosCloseCircleOutline className="icon-title icon-title--delete" />
+      <h3 className="message">Are you sure to delete this product?</h3>
+      <h4 className="object">{}</h4>
+      <div className="button-container">
+        <Button
+          className="button button--light--book"
+          onClick={() => setIsShowDelete(false)}
+        >
+          Cancel
+        </Button>
+        <Button
+          className="button button--main--book rounded"
+          onClick={handleDeleteProduct}
+        >
+          Delete
+        </Button>
+      </div>
+    </div>
+  );
 
   return (
     <div className="cart-container">
@@ -69,7 +108,14 @@ export default function Cart() {
                 </Button>
               </div>
               <h4 className="total">₫{item.product.price * item.amount}</h4>
-              <Button className="button button--text--red" type="button">
+              <Button
+                className="button button--text--red"
+                type="button"
+                onClick={() => {
+                  setIsShowDelete(true);
+                  setProductSelected(item);
+                }}
+              >
                 Delete
               </Button>
             </div>
@@ -84,6 +130,14 @@ export default function Cart() {
       >
         <span>Create a payment</span>
       </Button>
+
+      {/* Modal Confirm */}
+      <Modal
+        className={`${isShowDelete ? "modal-detail active" : "modal-detail"}`}
+        onClickClose={() => setIsShowDelete(false)}
+        isOpen={isShowDelete}
+        renderBody={renderBody}
+      />
     </div>
   );
 }

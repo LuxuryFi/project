@@ -7,7 +7,7 @@ export const addItemToCart = createAsyncThunk(
   async (newItem) => {
     try {
       const result = await cartAPI.addItem(newItem);
-      return result.data.data;
+      return newItem;
     } catch (error) {
       return Promise.reject(error.message);
     }
@@ -47,20 +47,10 @@ export const updateItemInCart = createAsyncThunk(
 
 export const deleteItemInCart = createAsyncThunk(
   "cartSlice/deleteItemInCart",
-  async (data) => {
+  async (cart_id) => {
     try {
-      const { amount, item } = data;
-      const result = await cartAPI.updateItem({
-        amount,
-        cart_id: item.cart_id,
-      });
-      return {
-        data: result.data.data,
-        item: {
-          ...item,
-          amount: amount,
-        },
-      };
+      const result = await cartAPI.deleteItem(cart_id);
+      return cart_id;
     } catch (error) {
       return Promise.reject(error.message);
     }
@@ -127,6 +117,25 @@ const cartSlice = createSlice({
       state.hasError = false;
     },
     [updateItemInCart.rejected]: (state, action) => {
+      message.err(action.error.message, 3);
+      state.isLoading = false;
+      state.hasError = true;
+    },
+    // Delete Item In Cart
+    [deleteItemInCart.pending]: (state) => {
+      state.isLoading = true;
+      state.hasError = false;
+    },
+    [deleteItemInCart.fulfilled]: (state, action) => {
+      state.items = state.items.filter(
+        (item) => item.cart_id !== action.payload
+      );
+      message.success("Deleted item successfully", 3);
+
+      state.isLoading = false;
+      state.hasError = false;
+    },
+    [deleteItemInCart.rejected]: (state, action) => {
       message.err(action.error.message, 3);
       state.isLoading = false;
       state.hasError = true;
