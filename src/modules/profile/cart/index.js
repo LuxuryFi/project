@@ -3,6 +3,7 @@ import { useDispatch, useSelector } from "react-redux";
 import {
   fetchCart,
   selectAllItemInCart,
+  updateItemInCart,
 } from "../../../store/slices/cartSlice";
 import { Form, InputNumber } from "antd";
 import Button from "../../../components/Button";
@@ -16,7 +17,14 @@ export default function Cart() {
     dispatch(fetchCart());
   }, [dispatch]);
 
-  const handleOnChangeAmount = () => {};
+  const handleOnChangeAmount = (amount, item) => {
+    dispatch(
+      updateItemInCart({
+        amount,
+        item,
+      })
+    );
+  };
 
   const handleCreatePayment = () => {};
 
@@ -35,7 +43,7 @@ export default function Cart() {
               <h4 className="price">₫{item.product.price}</h4>
               <div className="quantity-container">
                 <Button
-                  onClick={handleOnChangeAmount}
+                  onClick={() => handleOnChangeAmount(item.amount - 1, item)}
                   disabled={item.amount === 0 ?? true}
                   className="button square button--light prev"
                   type="button"
@@ -52,7 +60,7 @@ export default function Cart() {
                   />
                 </div>
                 <Button
-                  onClick={handleOnChangeAmount}
+                  onClick={() => handleOnChangeAmount(item.amount + 1, item)}
                   disabled={false}
                   className="button square button--light next"
                   type="button"

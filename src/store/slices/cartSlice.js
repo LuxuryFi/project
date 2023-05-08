@@ -23,6 +23,50 @@ export const fetchCart = createAsyncThunk("cartSlice/fetchCart", async () => {
   }
 });
 
+export const updateItemInCart = createAsyncThunk(
+  "cartSlice/updateItemInCart",
+  async (data) => {
+    try {
+      const { amount, item } = data;
+      const result = await cartAPI.updateItem({
+        amount,
+        cart_id: item.cart_id,
+      });
+      return {
+        data: result.data.data,
+        item: {
+          ...item,
+          amount: amount,
+        },
+      };
+    } catch (error) {
+      return Promise.reject(error.message);
+    }
+  }
+);
+
+export const deleteItemInCart = createAsyncThunk(
+  "cartSlice/deleteItemInCart",
+  async (data) => {
+    try {
+      const { amount, item } = data;
+      const result = await cartAPI.updateItem({
+        amount,
+        cart_id: item.cart_id,
+      });
+      return {
+        data: result.data.data,
+        item: {
+          ...item,
+          amount: amount,
+        },
+      };
+    } catch (error) {
+      return Promise.reject(error.message);
+    }
+  }
+);
+
 // Reducer
 const cartSlice = createSlice({
   name: "cartSlice",
@@ -60,6 +104,29 @@ const cartSlice = createSlice({
       state.hasError = false;
     },
     [fetchCart.rejected]: (state, action) => {
+      message.err(action.error.message, 3);
+      state.isLoading = false;
+      state.hasError = true;
+    },
+    // Update Item In Cart
+    [updateItemInCart.pending]: (state) => {
+      state.isLoading = true;
+      state.hasError = false;
+    },
+    [updateItemInCart.fulfilled]: (state, action) => {
+      message.success("Updated item successfully", 3);
+      state.items.find((item, index) => {
+        if (item.product_id === action.payload.item.product_id) {
+          state.items[index].amount = action.payload.item.amount;
+          return true;
+        }
+        return false;
+      });
+
+      state.isLoading = false;
+      state.hasError = false;
+    },
+    [updateItemInCart.rejected]: (state, action) => {
       message.err(action.error.message, 3);
       state.isLoading = false;
       state.hasError = true;
