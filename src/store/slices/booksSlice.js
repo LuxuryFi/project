@@ -132,6 +132,18 @@ export const fetchComment = createAsyncThunk(
   }
 );
 
+export const fetchAllCategoryBook = createAsyncThunk(
+  "booksSlice/fetchAllCategoryBook",
+  async () => {
+    try {
+      const result = await bookAPI.getAllCategory();
+      return result.data.data;
+    } catch (error) {
+      return Promise.reject(error.message);
+    }
+  }
+);
+
 // Reducer
 const booksSlice = createSlice({
   name: "booksSlice",
@@ -139,14 +151,24 @@ const booksSlice = createSlice({
     books: [],
     favorite: [],
     watch: [],
+    bookCategory: [],
     trendingBooks: [],
     bestSellerBooks: [],
     newestBooks: [],
     bookNeedUpdate: {},
+    searchTerm: "",
+    searchCategory: "",
     isLoading: false,
     hasError: false,
   },
-  reducers: {},
+  reducers: {
+    changeSearchTerm: (state, action) => {
+      state.searchTerm = action.payload;
+    },
+    changeSearchCategory: (state, action) => {
+      state.searchCategory = action.payload;
+    },
+  },
   extraReducers: {
     // Fetch All
     [fetchAll.pending]: (state) => {
@@ -313,6 +335,21 @@ const booksSlice = createSlice({
       state.isLoading = false;
       state.hasError = true;
     },
+    // fetch all category book
+    [fetchAllCategoryBook.pending]: (state) => {
+      state.isLoading = true;
+      state.hasError = false;
+    },
+    [fetchAllCategoryBook.fulfilled]: (state, action) => {
+      state.bookCategory = action.payload;
+      state.isLoading = false;
+      state.hasError = false;
+    },
+    [fetchAllCategoryBook.rejected]: (state, action) => {
+      message.err(action.error.message, 3);
+      state.isLoading = false;
+      state.hasError = true;
+    },
   },
 });
 
@@ -320,6 +357,8 @@ const booksSlice = createSlice({
 export const selectBooks = (state) => state.books.books;
 
 export const selectTrendingBooks = (state) => state.books.trendingBooks;
+
+export const selectCategoryBook = (state) => state.books.bookCategory;
 
 export const selectBestSellerBooks = (state) => state.books.bestSellerBooks;
 
@@ -332,5 +371,35 @@ export const selectBookWatch = (state) => state.books.watch;
 export const selectBookFavorite = (state) => state.books.favorite;
 
 export const selectBookIsLoading = (state) => state.books.isLoading;
+
+export const selectSearchTerm = (state) => state.books.searchTerm;
+
+export const selectSearchCategory = (state) => state.books.searchCategory;
+
+export const selectFilteredBookGrid = (state) => {
+  const searchCategory = selectSearchCategory(state);
+  const searchTerm = selectSearchTerm(state);
+  const books = selectBooks(state);
+
+  if (searchTerm === "" && searchCategory === "") {
+    return books;
+  }
+
+  return books.filter((item) => {
+    let result = true;
+
+    // Check includes name
+    if (!item.title.toLowerCase().includes(searchTerm.toLowerCase()))
+      return (result = false);
+
+    // Check category
+    if (searchCategory !== "" && item.category_name !== searchCategory)
+      return (result = false);
+
+    return result;
+  });
+};
+
+export const { changeSearchCategory, changeSearchTerm } = booksSlice.actions;
 
 export default booksSlice.reducer;

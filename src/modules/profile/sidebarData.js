@@ -3,7 +3,8 @@ import {
   BsJournalMedical,
   BsCreditCard2BackFill,
 } from "react-icons/bs";
-import { AiOutlineSchedule, AiOutlineShoppingCart } from "react-icons/ai";
+import { AiOutlineHeart, AiOutlineShoppingCart } from "react-icons/ai";
+import { MdMarkEmailUnread } from "react-icons/md";
 import { RiLockPasswordFill } from "react-icons/ri";
 
 // 1. Personal Information
@@ -18,9 +19,14 @@ const sidebarData = [
     path: "/profile/user-form",
   },
   {
-    icon: <BsJournalMedical className="icon" />,
+    icon: <AiOutlineHeart className="icon" />,
     text: "Favorite",
-    path: "/profile/medical-records",
+    path: "/profile/favorite",
+  },
+  {
+    icon: <MdMarkEmailUnread className="icon" />,
+    text: "Watch",
+    path: "/profile/watch",
   },
   {
     icon: <BsCreditCard2BackFill className="icon" />,

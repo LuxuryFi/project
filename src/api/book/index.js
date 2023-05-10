@@ -37,6 +37,18 @@ const bookAPI = {
     const url = `/project/comment`;
     return axiosClient.post(url, data);
   },
+  getAllCategory() {
+    const url = `project/category`;
+    return axiosClient.get(url);
+  },
+  checkFavorite() {
+    const url = `/project/favorite`;
+    return axiosClient.get(url);
+  },
+  checkWatch() {
+    const url = `/project/watch`;
+    return axiosClient.get(url);
+  },
 };
 
 export default bookAPI;

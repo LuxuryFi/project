@@ -80,13 +80,13 @@ export default function Navigation({ activeBg }) {
           </li> */}
         </ul>
         <div className="other-option">
-          {/* <Link
-            to="/appointment"
+          <Link
+            to="/profile/cart"
             className="button square button--blue--dark"
             type="button"
           >
             <AiOutlineShoppingCart />
-          </Link> */}
+          </Link>
         </div>
       </div>
     </div>

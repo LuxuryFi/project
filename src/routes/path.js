@@ -2,6 +2,8 @@
 export const PATH_PATIENT_PROFILE = "/profile/*";
 export const PATH_PATIENT_PROFILE_USER_FORM = "user-form";
 export const PATH_PATIENT_PROFILE_PAYMENTS = "payments";
+export const PATH_PATIENT_PROFILE_WATCH = "watch";
+export const PATH_PATIENT_PROFILE_FAVORITE = "favorite";
 export const PATH_PATIENT_PROFILE_PAYMENT_VIEW = "/payment/view/:order_id";
 export const PATH_PATIENT_PROFILE_APPOINTMENTS = "appointments";
 export const PATH_PATIENT_PROFILE_CART = "cart";

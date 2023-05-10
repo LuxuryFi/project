@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import { Col, Row } from "antd";
+import { Col, Row, Form, Input, Select } from "antd";
 import { FaAngleLeft, FaAngleRight } from "react-icons/fa";
 import Typewriter from "typewriter-effect";
 import ScrollToTop from "react-scroll-to-top";
@@ -12,16 +12,22 @@ import { useDispatch, useSelector } from "react-redux";
 import Slider from "react-slick";
 import "slick-carousel/slick/slick.css";
 import {
+  changeSearchCategory,
+  changeSearchTerm,
   fetchAll,
+  fetchAllCategoryBook,
   fetchBestSeller,
   fetchNewest,
   fetchTrending,
   selectBestSellerBooks,
   selectBooks,
+  selectCategoryBook,
+  selectFilteredBookGrid,
   selectNewestBooks,
   selectTrendingBooks,
 } from "../../store/slices/booksSlice";
 import Pagination from "../../components/Pagination";
+import Button from "../../components/Button";
 
 const mockAPI = [
   {
@@ -74,6 +80,8 @@ const mockAPI = [
   },
 ];
 
+const { Option } = Select;
+
 const settings = {
   dots: true,
   arrows: false,
@@ -108,12 +116,20 @@ const settings = {
 
 export default function HomePage() {
   const dispatch = useDispatch();
+  const [form] = Form.useForm();
   const [page, setPage] = useState(1);
   const books = useSelector(selectBooks);
+  const filteredBooks = useSelector(selectFilteredBookGrid);
   const [cloneBooks, setCloneBooks] = useState([]);
   const trendingBooks = useSelector(selectTrendingBooks);
   const bestSellerBooks = useSelector(selectBestSellerBooks);
   const newestBooks = useSelector(selectNewestBooks);
+  const bookCategory = useSelector(selectCategoryBook);
+
+  // Fetch Category
+  useEffect(() => {
+    dispatch(fetchAllCategoryBook());
+  }, [dispatch]);
 
   // Fetch Trending
   useEffect(() => {
@@ -140,8 +156,11 @@ export default function HomePage() {
     const limit = 10;
     let start = (page - 1) * limit;
     let end = (page - 1) * limit + limit;
-    setCloneBooks(books.slice(start, end));
-  }, [books, page]);
+    setCloneBooks(filteredBooks.slice(start, end));
+  }, [filteredBooks, page]);
+
+  // Search
+  const handleClickSearch = () => {};
 
   return (
     <div className="app-container">
@@ -351,6 +370,46 @@ export default function HomePage() {
       <section className="list-container container-space">
         <div className="container-fluid grid-content">
           <h3 className="title">Grid display books</h3>
+          <Form
+            scrollToFirstError
+            form={form}
+            className="search-container"
+            onFinish={handleClickSearch}
+          >
+            <Form.Item name="product_name">
+              <Input
+                className="input"
+                onChange={(e) => dispatch(changeSearchTerm(e.target.value))}
+                placeholder="Product Name"
+              ></Input>
+            </Form.Item>
+
+            <Form.Item name="category">
+              <Select
+                placeholder="Select your cateogry"
+                onChange={(value) => dispatch(changeSearchCategory(value))}
+              >
+                {bookCategory &&
+                  bookCategory.map((item, index) => (
+                    <Option key={index} value={item.category_name}>
+                      {item.category_name}
+                    </Option>
+                  ))}
+              </Select>
+            </Form.Item>
+
+            <Button
+              type="button"
+              className="button button--main--book"
+              onClick={() => {
+                dispatch(changeSearchCategory(""));
+                dispatch(changeSearchTerm(""));
+                form.resetFields();
+              }}
+            >
+              Reset
+            </Button>
+          </Form>
           <div className="grid-product">
             {cloneBooks &&
               cloneBooks.map((item, index) => (
@@ -386,7 +445,7 @@ export default function HomePage() {
             limit={10}
             setPage={setPage}
             currentPage={page}
-            count={books.length}
+            count={filteredBooks.length}
           />
         </div>
       </section>
