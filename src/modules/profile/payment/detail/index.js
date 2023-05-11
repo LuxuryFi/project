@@ -40,40 +40,40 @@ export default function PaymentDetail() {
   }, [details]);
 
   useEffect(() => {
-    dispatch(fetchPayment(order_id));
-    // dispatch(fetchDetails(order_id));
+    // dispatch(fetchPayment(order_id));
+    dispatch(fetchDetails(order_id));
   }, [dispatch, order_id]);
 
-  // useEffect(() => {
-  //   const calculateSubTotal = () => {
-  //     details.forEach((detail) => {
-  //       setSubTotal(
-  //         (prev) =>
-  //           prev + parseInt(detail.quantity, 10) * parseInt(detail.price)
-  //       );
-  //     });
-  //   };
+  useEffect(() => {
+    const calculateSubTotal = () => {
+      details.forEach((detail) => {
+        console.log(detail)
+        setSubTotal(
+          (prev) =>
+            prev + (parseInt(detail.amount, 10) * parseInt(detail.price))
+        );
+      });
+    };
 
-  //   if (
-  //     details.length > 0 &&
-  //     JSON.stringify(details) !== JSON.stringify(prevDetail)
-  //   ) {
-  //     setSubTotal(0);
-  //     calculateSubTotal();
-  //   }
-  // }, [details, prevDetail, subTotal]);
+    if (
+      details.length > 0 &&
+      JSON.stringify(details) !== JSON.stringify(prevDetail)
+    ) {
+      setSubTotal(0);
+      calculateSubTotal();
+    }
+  }, [details, prevDetail, subTotal]);
 
   const detailColumns = [
     {
       title: "Book Name",
       index: "product_name",
-      render: (record) => "Death Note",
+      dataIndex: "title",
     },
     {
       title: "Quantity",
-      index: "quantity",
-      // dataIndex: "quantity",
-      render: (record) => "2",
+      index: "amount",
+      dataIndex: "amount",
     },
     {
       title: "VAT",
@@ -83,15 +83,14 @@ export default function PaymentDetail() {
     {
       title: "Price",
       index: "price",
-      // dataIndex: "price",
-      render: (record) => "12000",
+      dataIndex: "price",
+      // render: (record) => "12000",
     },
     {
       title: "Total",
       index: "total",
       render: (record) =>
-        // `${parseInt(record.price, 10) * parseInt(record.quantity, 10)}`
-        "1200000",
+        `${parseInt(record.price, 10) * parseInt(record.amount, 10)}`
     },
   ];
 
@@ -184,15 +183,15 @@ export default function PaymentDetail() {
                     <div className="info-item">
                       <span className="payment-title">Subtotal:</span>
                       {/* <span className="payment-info">${subTotal}</span> */}
-                      <span className="payment-info">$1000</span>
+                      <span className="payment-info">${subTotal}</span>
                     </div>
                     <div className="info-item">
                       <span className="payment-title">Discount:</span>
-                      <span className="payment-info">-100</span>
+                      <span className="payment-info">${DISCOUNT}</span>
                     </div>
                     <div className="info-item">
                       <span className="payment-title">Total Amount:</span>
-                      <span className="payment-info">$900</span>
+                      <span className="payment-info">${subTotal}</span>
                     </div>
                   </div>
                 </Col>
