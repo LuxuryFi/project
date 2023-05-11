@@ -76,6 +76,18 @@ export const createPayment = createAsyncThunk(
   }
 );
 
+export const confirmPayment = createAsyncThunk(
+  'paymentsSlice/confirmPayment',
+  async (payment) => {
+    try {
+      const result = await orderAPI.confirmPayment(payment);
+      return result.data.data;
+    } catch (error) {
+      return Promise.reject(error.message);
+    }
+  }
+);
+
 // Reducer
 const paymentsSlice = createSlice({
   name: "paymentsSlice",
@@ -179,6 +191,25 @@ const paymentsSlice = createSlice({
       state.hasError = false;
     },
     [createPayment.rejected]: (state, action) => {
+      message.error(action.error.message, 3);
+      state.isLoading = false;
+      state.hasError = true;
+    },
+
+    [confirmPayment.pending]: (state) => {
+      state.isLoading = true;
+      state.hasError = false;
+    },
+    [confirmPayment.fulfilled]: (state, action) => {
+      message.success('Order payment has been created successfully!', 3);
+      state.urlPayment = action.payload;
+      setTimeout(() => {
+        window.open(action.payload);
+      }, 1000);
+      state.isLoading = false;
+      state.hasError = false;
+    },
+    [confirmPayment.rejected]: (state, action) => {
       message.error(action.error.message, 3);
       state.isLoading = false;
       state.hasError = true;

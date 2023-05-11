@@ -147,12 +147,12 @@ export default function PaymentDetail() {
                   <div className="info-item">
                     <p className="payment-title">Invoice To </p>
                     <p className="payment-info">
-                      {user.full_name ?? "Vu Hai Nam"}{" "}
-                      {user.address ?? "Xuan Mai"}
+                      {user.full_name ?? "Thu Hien"}{" "}
+                      {user.address ?? "Khoai Chau"}
                       {", "}
-                      {user.state ?? "Chuong My"}
+                      {user.state ?? "TP Hung Yen"}
                       {", "}
-                      {user.city ?? "Ha Noi"}
+                      {user.city ?? "Hung Yen"}
                     </p>
                   </div>
                 </Col>
@@ -160,7 +160,7 @@ export default function PaymentDetail() {
                   <div className="info-item">
                     <p className="payment-title">Payment Method</p>
                     <p className="payment-info">
-                      Debit Card XXXXXXXXXXXX-2541 HDFC Bank
+                      ACB Bank
                     </p>
                   </div>
                 </Col>

@@ -30,6 +30,10 @@ const orderAPI = {
     const url = `/project/order`;
     return axiosClient.post(url);
   },
+  confirmPayment(payment) {
+    const url = `/project/order/create_payment_url`;
+    return axiosClient.post(url, payment);
+  },
 };
 
 export default orderAPI;
