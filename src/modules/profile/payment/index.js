@@ -81,7 +81,7 @@ export default function PaymentList() {
         position: ['bottomCenter'],
       }}
       columns={paymentColumns}
-      dataSource={payments}
+      dataSource={payments || []}
       rowKey={(record) => record.order_id}
     />
   );

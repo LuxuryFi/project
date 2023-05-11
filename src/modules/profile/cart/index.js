@@ -35,6 +35,7 @@ export default function Cart() {
 
   const handleCreatePayment = () => {
     dispatch(createPayment());
+    window.location.href = "/profile/payments";
   };
 
   const handleDeleteProduct = () => {
@@ -70,7 +71,7 @@ export default function Cart() {
   return (
     <div className="cart-container">
       <div className="cart-content">
-        {Object.keys(cart).length > 0 &&
+        {cart && Object.keys(cart).length > 0 &&
           cart.map((item, index) => (
             <div key={item.product.title + index} className="cart-item">
               <img

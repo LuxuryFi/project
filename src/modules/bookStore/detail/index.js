@@ -85,6 +85,8 @@ export default function BookDetail() {
       user_id: currentUser.user_id,
     };
     dispatch(addItemToCart(data));
+    window.location.reload(false);
+
   };
 
   const handleFinishComment = (values) => {
