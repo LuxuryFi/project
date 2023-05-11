@@ -14,6 +14,30 @@ export const fetchPayments = createAsyncThunk(
   }
 );
 
+export const fetchWatch = createAsyncThunk(
+  "paymentsSlice/fetchWatch",
+  async () => {
+    try {
+      const result = await orderAPI.getWatch();
+      return result.data.data;
+    } catch (error) {
+      return Promise.reject(error.message);
+    }
+  }
+);
+
+export const fetchFavorite = createAsyncThunk(
+  "paymentsSlice/fetchFavorite",
+  async () => {
+    try {
+      const result = await orderAPI.getFavorite();
+      return result.data.data;
+    } catch (error) {
+      return Promise.reject(error.message);
+    }
+  }
+);
+
 export const fetchPayment = createAsyncThunk(
   "paymentsSlice/fetchPayment",
   async (order_id) => {
@@ -94,6 +118,36 @@ const paymentsSlice = createSlice({
       state.isLoading = false;
       state.hasError = true;
     },
+
+    // Fetch Detail
+    [fetchWatch.pending]: (state) => {
+      state.isLoading = true;
+      state.hasError = false;
+    },
+    [fetchWatch.fulfilled]: (state, action) => {
+      state.watches = action.payload;
+      state.isLoading = false;
+      state.hasError = false;
+    },
+    [fetchWatch.rejected]: (state, action) => {
+      message.error(action.error.message, 3);
+      state.isLoading = false;
+      state.hasError = true;
+    },
+    [fetchFavorite.pending]: (state) => {
+      state.isLoading = true;
+      state.hasError = false;
+    },
+    [fetchFavorite.fulfilled]: (state, action) => {
+      state.favorites = action.payload;
+      state.isLoading = false;
+      state.hasError = false;
+    },
+    [fetchFavorite.rejected]: (state, action) => {
+      message.error(action.error.message, 3);
+      state.isLoading = false;
+      state.hasError = true;
+    },
     // Fetch Detail
     [fetchDetails.pending]: (state) => {
       state.isLoading = true;
@@ -134,6 +188,10 @@ const paymentsSlice = createSlice({
 
 // Selector
 export const selectPayments = (state) => state.payments.payments;
+
+export const selectWatches = (state) => state.payments.watches;
+
+export const selectFavorites = (state) => state.payments.favorites;
 
 export const selectDetails = (state) => state.payments.details;
 
