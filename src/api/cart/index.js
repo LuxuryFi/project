@@ -6,7 +6,7 @@ const cartAPI = {
     return axiosClient.get(url);
   },
   addItem(newItem) {
-    const url = `/project/cart/`;
+    const url = `/project/cart`;
     return axiosClient.post(url, newItem);
   },
   removeItem(cart_id) {

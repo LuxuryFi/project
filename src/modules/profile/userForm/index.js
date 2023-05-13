@@ -116,6 +116,8 @@ export default function UserForm() {
 
     dispatch(updateInformation(formData));
     dispatch(getIdentity());
+    window.location.reload(false);
+
   };
 
   return (
@@ -129,40 +131,7 @@ export default function UserForm() {
         className="userForm"
       >
         {/* Upload */}
-        <Form.Item label="Avatar" valuePropName="fileList">
-          <Upload
-            onRemove={(file) => {
-              dispatch(deleteUserNeedUpdateAvatar());
-            }}
-            beforeUpload={(file) => {
-              // Fake sending document to action props succesfully
-              setOldImage(true);
-              file.status = "done";
-              const reader = new FileReader();
-              reader.readAsDataURL(file);
-              reader.onload = (event) => {
-                setAvatar([file]);
-                file.url = event.target.result;
-                dispatch(changeUserNeedUpdateAvatar(file));
-              };
-              return false;
-            }}
-            listType="picture-card"
-            fileList={userNeedUpdate.avatar}
-            onPreview={handlePreview}
-          >
-            <div>
-              <PlusOutlined />
-              <div
-                style={{
-                  marginTop: 8,
-                }}
-              >
-                Upload
-              </div>
-            </div>
-          </Upload>
-        </Form.Item>
+
 
         <Row>
           <Col className="left" sm={24} md={12} lg={12} xl={12} xll={12}>
@@ -269,52 +238,11 @@ export default function UserForm() {
               </Radio.Group>
             </Form.Item>
 
-            {/* State */}
-            <Form.Item
-              className="form-input-group"
-              rules={[
-                {
-                  required: true,
-                  message: "Please enter your state!",
-                },
-              ]}
-              label="State"
-              name="state"
-            >
-              <Input className="input" placeholder="Entery your state" />
-            </Form.Item>
           </Col>
         </Row>
 
         {/* City */}
-        <Form.Item
-          className="form-input-group"
-          rules={[
-            {
-              required: true,
-              message: "Please enter your city!",
-            },
-          ]}
-          label="City"
-          name="city"
-        >
-          <Input className="input" placeholder="Enter your city" />
-        </Form.Item>
 
-        {/* Address */}
-        <Form.Item
-          className="form-input-group"
-          rules={[
-            {
-              required: true,
-              message: "Please enter your address!",
-            },
-          ]}
-          label="Address"
-          name="address"
-        >
-          <Input className="input" placeholder="Enter address" />
-        </Form.Item>
 
         <Form.Item>
           <Button type="submit" className="button button--blue--dark">

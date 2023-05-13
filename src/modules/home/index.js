@@ -224,10 +224,10 @@ export default function HomePage() {
                         <h3 className="name">
                           {item.title ? item.title : mockAPI[3].name}
                         </h3>
-                        <p className="author">{mockAPI[3].author}</p>
+                        <p className="author">{item.author}</p>
                       </div>
                       <p className="prices">
-                        ${mockAPI[3].price_from} - ${mockAPI[3].price_to}
+                  ${item.price}
                       </p>
                     </div>
                   </Link>
@@ -266,10 +266,10 @@ export default function HomePage() {
                           <h3 className="name">
                             {item.title ? item.title : mockAPI[3].name}
                           </h3>
-                          <p className="author">{mockAPI[3].author}</p>
+                          <p className="author">{item.author}</p>
                         </div>
                         <p className="prices">
-                          ${mockAPI[3].price_from} - ${mockAPI[3].price_to}
+                          ${item.price}
                         </p>
                       </div>
                     </Link>
@@ -309,10 +309,10 @@ export default function HomePage() {
                           <h3 className="name">
                             {item.title ? item.title : mockAPI[3].name}
                           </h3>
-                          <p className="author">{mockAPI[3].author}</p>
+                          <p className="author">{item.author}</p>
                         </div>
                         <p className="prices">
-                          ${mockAPI[3].price_from} - ${mockAPI[3].price_to}
+                        ${item.price}
                         </p>
                       </div>
                     </Link>
@@ -352,10 +352,10 @@ export default function HomePage() {
                           <h3 className="name">
                             {item.title ? item.title : mockAPI[3].name}
                           </h3>
-                          <p className="author">{mockAPI[3].author}</p>
+                          <p className="author">{item.author}</p>
                         </div>
                         <p className="prices">
-                          ${mockAPI[3].price_from} - ${mockAPI[3].price_to}
+                        ${item.price}
                         </p>
                       </div>
                     </Link>
@@ -432,10 +432,10 @@ export default function HomePage() {
                       <h3 className="name">
                         {item.title ? item.title : mockAPI[3].name}
                       </h3>
-                      <p className="author">{mockAPI[3].author}</p>
+                      <p className="author">{item.author}</p>
                     </div>
                     <p className="prices">
-                      ${mockAPI[3].price_from} - ${mockAPI[3].price_to}
+                      ${item.price}
                     </p>
                   </div>
                 </Link>

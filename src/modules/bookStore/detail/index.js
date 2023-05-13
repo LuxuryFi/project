@@ -297,7 +297,7 @@ export default function BookDetail() {
                       <img
                         className="avatar"
                         alt="avatar"
-                        src={`${process.env.REACT_APP_API_URL}/${currentUser.avatar[0].url}`}
+                        src={`${process.env.REACT_APP_API_URL}/${currentUser.avatar[0].url || ""}`}
                       />
                     </div>
                     <div className="right">
